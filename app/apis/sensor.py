@@ -31,4 +31,4 @@ class SensorResource(Resource):
     def get(self):
         if not request.authorization:
             return dict(message='missing credentials'), 401
-            
+        
