@@ -1,6 +1,6 @@
 from flask_restplus import Api
 from app.apis.login import api as login_api
-# from black_forest.apis.forest_data import api as forest_data_api
+from app.apis.sensor import api as forest_data_api
 
 
 class BlackForestApi(Api):
@@ -10,3 +10,4 @@ class BlackForestApi(Api):
 
 api = BlackForestApi()
 api.add_namespace(login_api)
+api.add_namespace(forest_data_api)
