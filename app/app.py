@@ -14,13 +14,6 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'database.sqlite'),
     )
-
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
-
-
-    db.init_app(app)
-
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
     else:
