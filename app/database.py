@@ -15,4 +15,5 @@ def init_db():
     # they will be registered properly on the metadata.  Otherwise
     # you will have to import them first before calling init_db()
     import app.models
+    print(engine)
     Base.metadata.create_all(bind=engine)
