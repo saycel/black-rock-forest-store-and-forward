@@ -3,7 +3,7 @@
 version: '3'
 
 services:
-  python-377:
+  python-37:
     build:
       context: .
       dockerfile: DockerfilePython
