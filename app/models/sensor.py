@@ -2,7 +2,7 @@ from app.database import Base
 from sqlalchemy import Column, Integer, String
 
 
-class SensorData(Base):
+class Data(Base):
     __tablename__ = 'SensorData'
     id = Column(Integer, autoincrement='auto', primary_key=True)
     sensor_id = Column(Integer)
@@ -16,3 +16,9 @@ class SensorData(Base):
 
     def __repr__(self):
         return f'<Sensor {self.sensor_id}>'
+
+    @property
+    def serialize(self):
+        return dict(sensor_id=self.sensor_id, 
+                    value=self.value, 
+                    unit=self.unit)

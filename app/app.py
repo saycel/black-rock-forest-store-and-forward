@@ -2,9 +2,9 @@ import os
 from flask import Flask
 from app.apis import api
 from flask_sqlalchemy import SQLAlchemy
+from app.database import db_session
 
 
-db = SQLAlchemy()
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -26,5 +26,5 @@ def create_app(test_config=None):
                  title='Black Forest Api',
                  version='0.1',
                  description='A BLACK FOREST API')
-
+    
     return app

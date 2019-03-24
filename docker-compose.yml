@@ -1,0 +1,41 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+services:
+  python-377:
+    build:
+      context: .
+      dockerfile: DockerfilePython
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 2323:2323
+    restart: unless-stopped
+    networks: 
+      test-black:
+        ipv4_address: 10.0.0.4
+  
+  postgres:
+    image: postgres:11.2-alpine
+    restart: unless-stopped
+    networks: 
+      test-black:
+        ipv4_address: 10.0.0.5
+
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: black_forest
+
+networks:
+  test-black:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/16
+
+
+
