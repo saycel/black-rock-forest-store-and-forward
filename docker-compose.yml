@@ -3,11 +3,6 @@
 version: '3'
 
 services:
-  python-37:
-    build:
-      context: .
-      dockerfile: DockerfilePython
-
   app:
     build:
       context: .

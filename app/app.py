@@ -1,7 +1,6 @@
 import os 
 from flask import Flask
 from app.apis import api
-from flask_sqlalchemy import SQLAlchemy
 from app.database import db_session
 
 

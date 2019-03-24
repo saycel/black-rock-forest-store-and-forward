@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_restplus import Namespace, Resource
-from app.models.data import SensorData
+from app.models.sensor import Data
 from app.database import db_session
 
 
@@ -23,5 +23,5 @@ class SensorResource(Resource):
     def get(self):
         if not request.authorization:
             return dict(message='missing credentials'), 401
-        result = [data.serialize for data in SensorData.query.all()]
+        result = [data.serialize for data in Data.query.all()]
         return jsonify(result)
