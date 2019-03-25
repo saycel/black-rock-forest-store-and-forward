@@ -24,13 +24,20 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: black_forest
+  
+  mosquitto:
+    image: eclipse-mosquitto:1.5.8
+    restart: unless-stopped 
+    networks: 
+      test-black:
+        ipv4_address: 10.0.0.6
 
 networks:
   test-black:
     ipam:
       driver: default
       config:
-        - subnet: 10.0.0.0/16
+        - subnet: 10.0.0.0/24
 
 
 
