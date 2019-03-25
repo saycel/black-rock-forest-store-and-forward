@@ -4,7 +4,7 @@ make sure you have installed in the RPI:
 - docker-compose 
 - git
 
-make sure you hace installed in other machine:
+make sure you have installed in other machine:
 - postman
 
 # What's in the box?
