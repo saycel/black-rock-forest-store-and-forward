@@ -43,7 +43,7 @@ In order to know if the rest api is up and running,first make sure the the pc wh
      2) click in the Authorization tab and choose Basic Auth type
      3) the username is german and the password is martinez
      4) click the send button next to url textbox
-     5) you should recevie a json response:
+     5) you should receive a json response:
          {"message": "success"}
 
 
