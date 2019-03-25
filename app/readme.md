@@ -40,10 +40,10 @@ In order to know if the rest api is up and running,first make sure the the pc wh
   1) get the RPI IP address
   2) in postman create a post request
      1) in the url textbox:  http://**RPI-IP**:2323/login
-     2) click in the Authorization tab and in type choose Basic Auth
-     3) the the username is german and the password is martinez
+     2) click in the Authorization tab and choose Basic Auth type
+     3) the username is german and the password is martinez
      4) click the send button next to url textbox
-     5) you should recevie al json response:
+     5) you should recevie a json response:
          {"message": "success"}
 
 
