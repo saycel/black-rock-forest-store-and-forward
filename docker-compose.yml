@@ -3,16 +3,6 @@
 version: '3'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 2323:2323
-    restart: unless-stopped
-    networks: 
-      test-black:
-        ipv4_address: 10.0.0.4
   
   postgres:
     image: postgres:11.2-alpine
@@ -31,6 +21,19 @@ services:
     networks: 
       test-black:
         ipv4_address: 10.0.0.6
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 2323:2323
+    restart: unless-stopped
+    networks: 
+      test-black:
+        ipv4_address: 10.0.0.4
+    depends_on:
+      - postgres
 
 networks:
   test-black:
