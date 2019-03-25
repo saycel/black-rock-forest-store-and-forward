@@ -16,7 +16,7 @@ make sure you have installed in other machine:
 # Step to build the project from scratch
 the build proccess with docker-compose take care of everything you need to have up and runing the project in the RPI, also the containers are setup to auto restart in case the RPI is shutdown or restarted.
 
-    ~$ git clone
+    ~$ git clone https://gitlab.com/german.martinez/black-forest.git
     it will ask you to login with your gitlab credentials
     ~$ cd black-forest 
     ~$ docker-compose build 
