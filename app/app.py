@@ -1,8 +1,6 @@
 import os 
 from flask import Flask
 from app.apis import api
-from app.database import db_sessions
-
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
