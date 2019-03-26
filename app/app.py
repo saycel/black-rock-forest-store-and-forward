@@ -1,7 +1,7 @@
 import os 
 from flask import Flask
 from app.apis import api
-from app.database import db_session
+from app.database import db_sessions
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -12,6 +12,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
     )
+
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
     else:

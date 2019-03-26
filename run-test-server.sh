@@ -1,6 +1,7 @@
 #!/bin/ash
 
 python init_database.py
+python mqtt_sub.py &
 export FLASK_APP=app/app.py
 export FLASK_DEBUG=True
 export FLASK_ENV=development
