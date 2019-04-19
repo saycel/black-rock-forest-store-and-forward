@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
-from app.database import db_session, init_db
-from app.models.sensor import Data
+from app.database import db_session
+from app.models import SensorData
 import json
 
 
@@ -11,9 +11,9 @@ def on_connect(mqttc, obj, flags, rc):
 def on_message(mqttc, obj, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
     m_in = json.loads(msg.payload)
-    db_session.add(Data(m_in['sensor_id'],
-                        m_in['value'],
-                        m_in['unit']))
+    db_session.add(SensorData(m_in['sensor_id'],
+                              m_in['value'],
+                              m_in['unit']))
     db_session.commit()
 
 
