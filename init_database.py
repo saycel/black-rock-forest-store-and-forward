@@ -5,4 +5,4 @@ if not table:
     print('initializing database')
     init_db()
 else:
-    print('database already exist, drop before initialize')
+    print('db already exist,in case you want a fresh install drop db before run this script')

@@ -1,9 +1,13 @@
 from __future__ import with_statement
 
+import os
 from logging.config import fileConfig
 
+import sys
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+from app.config import config as app_confing
+
 
 from app.models import Base
 
@@ -28,6 +32,14 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+
+if os.environ['FLASK_ENV'] == 'development':
+    config.set_main_option('sqlalchemy.url', app_confing.DEV_DATABASE_URI)
+elif os.environ['FLASK_ENV'] == 'production':
+    config.set_main_option('sqlalchemy.url',  app_confing.PROD_DATABASE_URI)
+else:
+    sys.exit(0)
 
 
 def run_migrations_offline():
