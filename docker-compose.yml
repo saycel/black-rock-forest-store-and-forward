@@ -47,6 +47,14 @@ services:
       - mosquitto
       - postgres
 
+  nodered:
+    image: nodered/node-red-docker:slim
+    ports:
+      - 1880:1880
+    networks:
+      test-black:
+        ipv4_address: 10.0.0.3
+
 networks:
   test-black:
     ipam:

@@ -1,5 +1,5 @@
 from app.database import Base
-from sqlalchemy import Column, Integer, JSON, String
+from sqlalchemy import Column, Integer, JSON, String, Boolean
 
 
 class SensorData(Base):
@@ -9,6 +9,7 @@ class SensorData(Base):
     net_key = Column(String)
     device_id = Column(String)
     channels = Column(JSON())
+    is_collected = Column(Boolean, nullable=False, default=False)
 
     def __init__(self, app_key, net_key, device_id, channels):
         self.app_key = app_key

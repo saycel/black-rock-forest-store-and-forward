@@ -1,26 +1,20 @@
 from flask import request, jsonify
 from flask_restplus import Namespace, Resource, fields
+
+from app.CollectorService import CollectorService
 from app.models import SensorData
 from app.database import db_session
 
-authorizations = {
-    'basicAuth': {
-        'type': 'http',
-        'schema': 'basic'
-    }
-}
 
 api = Namespace('sensor',
-                description='Expose sensor Data',
-                authorizations=authorizations)
+                description='Expose sensor Data'
+                )
 
 
 @api.route('/all')
 class SensorResource(Resource):
-    @api.doc(security='basicAuth')
     def get(self):
-        result = [data.serialize for data in SensorData.query.all()]
-        return jsonify(result)
+        return CollectorService().get_all_sensor_data()
 
 
 @api.route('/collector/<app_key>/<net_key>/<device_id>/')
