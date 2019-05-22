@@ -1,5 +1,7 @@
+import datetime
+
 from app.database import Base
-from sqlalchemy import Column, Integer, JSON, String, Boolean
+from sqlalchemy import Column, Integer, JSON, String, Boolean, DateTime
 
 
 class SensorData(Base):
@@ -10,12 +12,14 @@ class SensorData(Base):
     device_id = Column(String)
     channels = Column(JSON())
     is_collected = Column(Boolean, nullable=False, default=False)
+    created_at = Column(DateTime, nullable=False)
 
     def __init__(self, app_key, net_key, device_id, channels):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
         self.channels = channels
+        self.created_at = datetime.datetime.utcnow()
 
     def __repr__(self):
         return f'<Sensor device_id:{self.device_id}, net_key:{self.net_key}>'

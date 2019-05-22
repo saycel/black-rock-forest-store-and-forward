@@ -22,6 +22,13 @@ class CollectorResource(Resource):
     def get(self, app_key, net_key, device_id):
         try:
             channels = request.args.to_dict()
+
+            for k,v in channels.items():
+                try:
+                    channels[k] = float(v)
+                except Exception as e:
+                    return dict(message=f"{k}:{v}, value is not a float or integer"), 400
+
             record = SensorData(app_key=app_key,
                                 net_key=net_key,
                                 device_id=device_id,

@@ -10,6 +10,8 @@ services:
     networks: 
       test-black:
         ipv4_address: 10.0.0.5
+    ports:
+      - 5432:5432
 
     environment:
       POSTGRES_PASSWORD: postgres
