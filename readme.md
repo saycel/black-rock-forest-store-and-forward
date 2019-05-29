@@ -1,11 +1,24 @@
 # Before Start
-make sure you have installed in the RPI:
--  docker
-- docker-compose 
-- git
+Make sure you have the following installed on your RPI:
+- [docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
+- [git](https://git-scm.com/)
 
-make sure you have installed in other machine:
-- postman
+Before running the following commands, do:
+`sudo apt-get update`
+
+To install docker:
+`curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh`
+
+To install docker-compose:
+`sudo apt install python3-pip -y`
+`sudo pip3 install docker-compose==1.12.0`
+
+To install git:
+`sudo apt install git -y`
+
+Make sure you have installed on other machine:
+- [postman](https://www.getpostman.com/)
 
 # What's in the box?
 
@@ -19,8 +32,8 @@ the build proccess with docker-compose take care of everything you need to have 
     ~$ git clone https://gitlab.com/german.martinez/black-forest.git
     it will ask you to login with your gitlab credentials
     ~$ cd black-forest 
-    ~$ docker-compose build 
-    ~$ docker-compose up 
+    ~$ sudo docker-compose build 
+    ~$ sudo docker-compose up 
 
 In case you have any permission problems with  docker-compose, please run all docker-compose commands with sudo.
 
@@ -30,9 +43,9 @@ To avoid any merge conflics, **DO NOT CHANGE ANY IN THE black-forest project**, 
     ~$ cd black-forest
     ~$ git pull 
     it will ask for gitlab credentials
-    ~$ docker-compose stop
-    ~$ docker-compose build 
-    ~$ docker-compose up 
+    ~$ sudo docker-compose stop
+    ~$ sudo docker-compose build 
+    ~$ sudo docker-compose up 
 
 # Test
 In order to know if the rest api is up and running,first make sure the the pc where you installed postman and the RPI are in the same lan:
