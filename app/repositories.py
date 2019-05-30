@@ -28,3 +28,13 @@ class SensorRepository:
             db_session.add(lecture)
 
         db_session.commit()
+
+    def count_not_collected(self):
+        count = (
+            db_session
+            .query(SensorData)
+            .filter(SensorData.is_collected == "0")
+            .count()
+        )
+
+        return count
