@@ -48,6 +48,22 @@ services:
     depends_on:
       - mosquitto
       - postgres
+  
+  data_collector:
+    build:
+      context: .
+      dockerfile: dataCollectorDockerfile
+    ports:
+       - 4000:4000
+    restart: unless-stopped
+    environment:
+        - FLASK_ENV=production
+        - FLASK_DEBUG=True
+    networks:
+      test-black:
+        ipv4_address: 10.0.0.10
+    depends_on:
+      - app
 
   nodered:
     image: nodered/node-red-docker:slim
