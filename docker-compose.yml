@@ -29,7 +29,7 @@ services:
         ipv4_address: 10.0.0.6
     depends_on:
       - postgres
-
+  
   app:
     build:
       context: .
@@ -46,32 +46,16 @@ services:
       test-black:
         ipv4_address: 10.0.0.4
     depends_on:
-      - mosquitto
+      # - mosquitto
       - postgres
-  
-  data_collector:
-    build:
-      context: .
-      dockerfile: dataCollectorDockerfile
-    ports:
-       - 4000:4000
-    restart: unless-stopped
-    environment:
-        - FLASK_ENV=production
-        - FLASK_DEBUG=True
-    networks:
-      test-black:
-        ipv4_address: 10.0.0.10
-    depends_on:
-      - app
 
-  nodered:
-    image: nodered/node-red-docker:slim
-    ports:
-      - 1880:1880
-    networks:
-      test-black:
-        ipv4_address: 10.0.0.3
+  # nodered:
+  #   image: nodered/node-red-docker:slim
+  #   ports:
+  #     - 1880:1880
+  #   networks:
+  #     test-black:
+  #       ipv4_address: 10.0.0.3
 
 networks:
   test-black:
