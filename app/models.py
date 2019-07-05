@@ -22,7 +22,7 @@ class SensorData(Base):
 
 
     def __repr__(self):
-        return f'<Sensor device_id:{self.device_id}, net_key:{self.net_key}>'
+        return f'<SensorData device_id:{self.device_id}, net_key:{self.net_key}>'
 
     def decode(self, payload):
         pass
@@ -32,5 +32,31 @@ class SensorData(Base):
         return dict(device_id=self.device_id,
                     app_key=self.app_key,
                     net_key=self.net_key,
-                    channels=self.channels
+                    channels=self.channels,
+                    created_at=self.created_at
+                    )
+
+
+class SensorDebug(Base):
+    __tablename__ = "debug"
+    id = Column(Integer, autoincrement='auto', primary_key=True)
+    device_id = Column(String)
+    code = Column(Integer)
+    message = Column(String)
+    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+
+    def __init__(self, device_id, code, message):
+        self.device_id = device_id
+        self.code = code
+        self.message = message
+
+    def __repr__(self):
+        return f'<SensorDebug device_id:{self.device_id}, code:{self.code}, message:{self.message}, created_at:{self.created_at}>'
+
+    @property
+    def serialize(self):
+        return dict(device_id=self.device_id,
+                    code=self.code,
+                    message=self.message,
+                    created_at=self.created_at
                     )
