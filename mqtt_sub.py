@@ -27,10 +27,13 @@ def insert_sensor_data(msg):
     try:
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
         m_in = json.loads(msg.payload)
-        db_session.add(SensorData(m_in['app_key'],
-                                  m_in['net_key'],
-                                  m_in['device_id'],
-                                  m_in['channels']))
+
+        for key, value in m_in['channels'].items():
+            db_session.add(SensorData(m_in['app_key'],
+                                      m_in['net_key'],
+                                      m_in['device_id'],
+                                      key,
+                                      value))
         db_session.commit()
     except Exception:
         print(f"error trying to insert {m_in}")
