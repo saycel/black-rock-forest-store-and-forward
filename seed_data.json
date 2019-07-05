@@ -1,18 +1,30 @@
 [
-    {
-        "target_class": "app.models:SensorData",
-        "data":[
-          {
-            "app_key": "111",
-            "net_key": "222",
-            "device_id": "3333",
-            "is_collected": false,
-            "channels": {
-              "ch1": "1",
-              "ch2": "2"
-            },
-            "created_at":1213154523442
-          }
-        ]
-    }
+  {
+    "target_class": "app.models:SensorData",
+    "data":[
+      {
+        "app_key": "111",
+        "net_key": "222",
+        "device_id": "3333",
+        "is_collected": false,
+        "channel": "ch1",
+        "value": 12,
+        "created_at":1213154523442
+      }
+    ]
+  },
+  {
+    "target_class": "app.models:DebugCode",
+    "data": [
+      {
+        "code": "1",
+        "description":"Error in Sensor Data"
+      },
+      {
+        "code": "2",
+        "description":"MQTT Reconnection"
+      }
+    ]
+
+  }
 ]
