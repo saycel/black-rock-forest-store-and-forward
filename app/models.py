@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from app.database import Base
-from sqlalchemy import Column, String, DateTime, BigInteger
+from sqlalchemy import Column, String, DateTime, BigInteger, Float
 
 
 class Sensor(Base):
@@ -42,7 +42,7 @@ class SensorData(Base):
     net_key = Column(String)
     device_id = Column(String)
     channel = Column(String)
-    value = Column(BigInteger)
+    value = Column(Float)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, app_key, net_key, device_id, channel, value):
