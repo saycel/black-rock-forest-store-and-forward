@@ -49,7 +49,7 @@ def upgrade():
     sa.Column('net_key', sa.String(), nullable=True),
     sa.Column('device_id', sa.String(), nullable=True),
     sa.Column('channel', sa.String(), nullable=True),
-    sa.Column('value', sa.BigInteger(), nullable=True),
+    sa.Column('value', sa.Float(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
