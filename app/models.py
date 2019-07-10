@@ -1,18 +1,19 @@
-import datetime
+from datetime import datetime
 
 from app.database import Base
-from sqlalchemy import Column, Integer, JSON, String, Boolean, DateTime, BigInteger
+from sqlalchemy import Column, String, DateTime, BigInteger
 
 
 class Sensor(Base):
     __tablename__ = "sensor"
-    id = Column(BigInteger, autoincrement='auto', primary_key=True)
+    id = Column(BigInteger, autoincrement=True, primary_key=True)
     device_id = Column(String, primary_key=True)
     mac_addr = Column(String)
     type = Column(String)
     location = Column(String)
     description = Column(String)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     def __init__(self, device_id, mac_addr, type, location, description=''):
         self.device_id = device_id
@@ -36,13 +37,13 @@ class Sensor(Base):
 
 class SensorData(Base):
     __tablename__ = 'sensordata'
-    id = Column(BigInteger, autoincrement='auto', primary_key=True)
+    id = Column(BigInteger, autoincrement=True, primary_key=True)
     app_key = Column(String)
     net_key = Column(String)
     device_id = Column(String)
     channel = Column(String)
     value = Column(BigInteger)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, app_key, net_key, device_id, channel, value):
         self.app_key = app_key
@@ -70,11 +71,11 @@ class SensorData(Base):
 
 class SensorDebug(Base):
     __tablename__ = "debug"
-    id = Column(BigInteger, autoincrement='auto', primary_key=True)
+    id = Column(BigInteger, autoincrement=True, primary_key=True)
     device_id = Column(String)
     code = Column(String)
     message = Column(String)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, device_id, code, message):
         self.device_id = device_id
@@ -94,10 +95,11 @@ class SensorDebug(Base):
 
 class DebugCode(Base):
     __tablename__ = "debugcode"
-    id = Column(BigInteger, autoincrement='auto', primary_key=True)
+    id = Column(BigInteger, autoincrement=True, primary_key=True)
     code = Column(String)
     description=Column(String)
-    created_at = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     def __init__(self, code, description):
         self.code = code
