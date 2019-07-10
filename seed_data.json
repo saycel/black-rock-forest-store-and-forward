@@ -6,10 +6,8 @@
         "app_key": "111",
         "net_key": "222",
         "device_id": "3333",
-        "is_collected": false,
         "channel": "ch1",
-        "value": 12,
-        "created_at":1213154523442
+        "value": 12
       }
     ]
   },
@@ -25,6 +23,17 @@
         "description":"MQTT Reconnection"
       }
     ]
-
+  },
+  {
+    "target_class": "app.models:Sensor",
+    "data": [
+      {
+        "device_id": "device-000001",
+        "mac_addr": "ac:de:48:00:11:22",
+        "type": "esp8266",
+        "location": "-27.4563713,-58.9823433",
+        "description": "Esp German Argentina"
+      }
+    ]
   }
 ]
