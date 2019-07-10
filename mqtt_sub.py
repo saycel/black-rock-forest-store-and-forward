@@ -68,7 +68,7 @@ mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
 mqttc.on_subscribe = on_subscribe
 mqttc.on_log = on_log
-mqttc.connect("192.168.128.196", 1883, 60)
+mqttc.connect("10.0.0.6", 1883, 60)
 mqttc.subscribe("forest", 0)
 mqttc.subscribe("debug", 0)
 
