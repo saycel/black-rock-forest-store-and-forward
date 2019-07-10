@@ -49,7 +49,7 @@ class SensorData(Base):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
-        self.channels = channel
+        self.channel = channel
         self.value = value
 
 
