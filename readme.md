@@ -17,6 +17,22 @@ To install docker-compose:
 To install git:
 `sudo apt install git -y`
 
+To install mosquitto:
+`sudo apt install mosquitto -y`
+`sudo touch /etc/mosquitto/conf.d/bridge.conf`
+`nano /etc/mosquitto/conf.d/bridge.conf`
+
+```
+add the following:
+
+connection bridge-central
+address 
+topic forest out 0
+```
+
+`sudo systemctl restart mosquitto`
+
+
 Make sure you have installed on other machine:
 - [postman](https://www.getpostman.com/)
 
