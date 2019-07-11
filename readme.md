@@ -59,7 +59,7 @@ In order to know if the rest api is up and running,first make sure the the pc wh
      5) you should receive a json response:
          {"message": "success"}
 
-# Store Records
+# Store Records HTTP
 
 Follow this steps to store a new record in the database using **GET HTTP REQUEST**.  
 The format of the URL is as follow:  
@@ -76,6 +76,45 @@ http://10.0.0.115:2323/sensor/collector/1234/abc/x1v3/?ch1=1&ch2=2
   2) use http://**RPI-IP**:2323/<app_key>/<net_key>/<device_id>/?chN=n
   3) click the send button next to url textbox
   4) after send the request if everything goes ok, you will receive a success message
+
+
+# Store Records MQTT
+
+Follow this steps to store a new record in the database using **MQTT**.  
+The format of the message:
+
+host:157.230.15.139
+port:1883
+
+Generic:
+```json
+     {
+            "app_key": "application key",
+            "device_id": "node unique identifier",
+            "net_key": "network key",
+            "channels": {
+                "ch1": "float as string",
+                "ch2": "float as string",
+                "chN": "float as string"
+            }
+        }
+```
+
+Example:
+
+```json
+        {
+            "app_key": "1",
+            "device_id": "3",
+            "net_key": "2",
+            "channels": {
+                "ch1": "1",
+                "ch2": "2"
+            }
+        }
+```
+
+  
 
 # Get all records
 
