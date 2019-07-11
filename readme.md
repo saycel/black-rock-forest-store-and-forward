@@ -26,7 +26,7 @@ To install mosquitto:
 add the following:
 
 connection bridge-central
-address 
+address 157.230.15.139:1883
 topic forest out 0
 ```
 
