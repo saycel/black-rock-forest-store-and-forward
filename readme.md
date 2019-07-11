@@ -12,6 +12,7 @@ To install docker:
 
 To install docker-compose:
 `sudo apt install python3-pip -y`
+
 `sudo pip3 install docker-compose==1.12.0`
 
 To install git:
@@ -19,8 +20,10 @@ To install git:
 
 To install mosquitto:
 `sudo apt install mosquitto -y`
+
 `sudo touch /etc/mosquitto/conf.d/bridge.conf`
-`nano /etc/mosquitto/conf.d/bridge.conf`
+
+`sudo nano /etc/mosquitto/conf.d/bridge.conf`
 
 ```
 add the following:
