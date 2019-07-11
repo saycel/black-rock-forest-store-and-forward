@@ -18,16 +18,16 @@ services:
     volumes:
       - black-forest:/var/lib/postgresql/data
   
-  # mosquitto:
-  #   image: eclipse-mosquitto:1.5.8
-  #   restart: unless-stopped 
-  #   ports:
-  #     - 1883:1883
-  #   networks: 
-  #     test-black:
-  #       ipv4_address: 10.0.0.6
-  #   depends_on:
-  #     - postgres
+  mosquitto:
+    image: eclipse-mosquitto:1.5.8
+    restart: unless-stopped 
+    ports:
+      - 1883:1883
+    networks: 
+      test-black:
+        ipv4_address: 10.0.0.6
+    depends_on:
+      - postgres
   
   app:
     build:
