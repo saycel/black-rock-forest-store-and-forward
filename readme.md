@@ -19,6 +19,7 @@ To install git:
 `sudo apt install git -y`
 
 To install mosquitto:
+
 `sudo apt install mosquitto -y`
 
 `sudo touch /etc/mosquitto/conf.d/bridge.conf`
@@ -36,8 +37,10 @@ topic forest out 0
 `sudo systemctl restart mosquitto`
 
 
-Make sure you have installed on other machine:
+Make sure you have installed in a different machine:
 - [postman](https://www.getpostman.com/)
+- [mqttbox](http://workswithweb.com/html/mqttbox/downloads.html)
+
 
 # What's in the box?
 
