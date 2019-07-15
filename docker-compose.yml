@@ -5,63 +5,36 @@ version: '3'
 services:
 
   postgres:
-    image: timescale/timescaledb:latest-pg11
+    image: postgres:11-alpine
     restart: unless-stopped
-    networks:
-      test-black:
-        ipv4_address: 10.0.0.5
-    ports:
-      - 5432:5432
+    network_mode: host
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: black_forest
     volumes:
       - black-forest:/var/lib/postgresql/data
+    depends_on:
+      - mosquitto
   
   mosquitto:
     image: eclipse-mosquitto:1.5.8
     restart: unless-stopped 
-    ports:
-      - 1883:1883
-    networks: 
-      test-black:
-        ipv4_address: 10.0.0.6
-    depends_on:
-      - postgres
+    network_mode: host
   
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 2323:2323
     restart: unless-stopped
     environment:
       - PYTHONPATH=/black-forest
       - FLASK_ENV=production
       - FLASK_DEBUG=True
       - FLASK_APP=app/app.py
-    networks:
-      test-black:
-        ipv4_address: 10.0.0.4
+    network_mode: host
     depends_on:
-      # - mosquitto
+      - mosquitto
       - postgres
-
-  # nodered:
-  #   image: nodered/node-red-docker:slim
-  #   ports:
-  #     - 1880:1880
-  #   networks:
-  #     test-black:
-  #       ipv4_address: 10.0.0.3
-
-networks:
-  test-black:
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.0.0.0/24
 
 volumes:
   black-forest:
