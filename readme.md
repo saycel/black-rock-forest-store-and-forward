@@ -107,6 +107,8 @@ The format of the message:
 
 host:157.230.15.139
 port:1883
+topic: forest
+protocol: mqtt/tcp
 
 Generic:
 ```json
