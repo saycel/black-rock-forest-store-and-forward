@@ -4,16 +4,9 @@ import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from app.config import config
+from app.config.config import DATABASE_URI
 
-if os.environ['FLASK_ENV'] == 'development':
-    db_uri = config.DEV_DATABASE_URI
-elif os.environ['FLASK_ENV'] == 'production':
-    db_uri = config.PROD_DATABASE_URI
-else:
-    sys.exit(0)
-
-engine = create_engine(db_uri,
+engine = create_engine(DATABASE_URI,
                        convert_unicode=True,
                        echo=True
                       )

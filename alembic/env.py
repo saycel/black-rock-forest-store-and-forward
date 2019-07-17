@@ -34,12 +34,7 @@ target_metadata = Base.metadata
 # ... etc.
 
 
-if os.environ['FLASK_ENV'] == 'development':
-    config.set_main_option('sqlalchemy.url', app_confing.DEV_DATABASE_URI)
-elif os.environ['FLASK_ENV'] == 'production':
-    config.set_main_option('sqlalchemy.url',  app_confing.PROD_DATABASE_URI)
-else:
-    sys.exit(0)
+config.set_main_option('sqlalchemy.url', app_confing.DATABASE_URI)
 
 
 def run_migrations_offline():
