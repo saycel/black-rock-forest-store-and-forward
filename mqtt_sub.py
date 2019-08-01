@@ -33,7 +33,8 @@ def insert_sensor_data(msg):
                                       m_in['net_key'],
                                       m_in['device_id'],
                                       key,
-                                      value))
+                                      value,
+                                      min['unit']))
         db_session.commit()
     except Exception:
         print(f"error trying to insert {m_in}")

@@ -41,16 +41,18 @@ class SensorData(Base):
     app_key = Column(String)
     net_key = Column(String)
     device_id = Column(String)
-    channel = Column(String)
+    field_name = Column(String)
     value = Column(Float)
+    unit_string = Column(String)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, app_key, net_key, device_id, channel, value):
+    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
-        self.channel = channel
+        self.field_name = field_name
         self.value = value
+        self.unit_string = unit_string
 
 
     def __repr__(self):
@@ -64,7 +66,7 @@ class SensorData(Base):
         return dict(device_id=self.device_id,
                     app_key=self.app_key,
                     net_key=self.net_key,
-                    channel=self.channel,
+                    field_name=self.field_name,
                     value=self.value,
                     created_at=self.created_at)
 
