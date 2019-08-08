@@ -69,6 +69,18 @@ To avoid any merge conflics, **DO NOT CHANGE ANY IN THE black-forest project**, 
     ~$ sudo docker-compose build 
     ~$ sudo docker-compose up 
 
+# Running in Mac with Vagrant
+For running the dev env in mac you need to do it with vagrant.
+Steps to install an run the prject with vagrant:
+
+1) Install vagrant with brew. ```~$ brew install vagrant```
+2) Install the docker provisioner ```~$ vagrant plugin install vagrant-docker-compose```
+3) go to the root folder of the project where the **Vagrant** file is 
+4) run ```~$ vagrant up```
+
+the ip of the VM is 192.168.33.10  and have to be use as **RPI-IP** on incoming steps
+
+
 # Test
 In order to know if the rest api is up and running,first make sure the the pc where you installed postman and the RPI are in the same lan:
 
