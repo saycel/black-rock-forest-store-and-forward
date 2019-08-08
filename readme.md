@@ -71,7 +71,7 @@ To avoid any merge conflics, **DO NOT CHANGE ANY IN THE black-forest project**, 
 
 # Running in Mac with Vagrant
 For running the dev env in mac you need to do it with vagrant.
-Steps to install an run the prject with vagrant:
+Follow the steps to install and run the project:
 
 1) Install vagrant with brew. ```~$ brew install vagrant```
 2) Install the docker provisioner ```~$ vagrant plugin install vagrant-docker-compose```
