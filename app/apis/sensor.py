@@ -39,4 +39,3 @@ class CollectorResource(Resource):
             return dict(message='something went wrong'), 500
 
         return dict(message='success')
-
