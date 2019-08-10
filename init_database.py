@@ -6,8 +6,7 @@ try:
 except Exception:
     print('waiting for postgres db...')
     sleep(10)
-
-table = engine.dialect.has_table(engine, 'SensorData')
+    table = engine.dialect.has_table(engine, 'SensorData')
 
 if not table:
     print('initializing database')
