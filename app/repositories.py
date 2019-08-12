@@ -20,21 +20,10 @@ class SensorRepository:
         )
         return data
 
-    def set_collected_to_true(self):
-        all_lectures = self.get_latest_sensor_data()
-
-        for lecture in all_lectures:
-            lecture.is_collected = "1"
-            db_session.add(lecture)
-
+    def insert_one(self, record):
+        db_session.add(record)
         db_session.commit()
 
-    def count_not_collected(self):
-        count = (
-            db_session
-            .query(SensorData)
-            .filter(SensorData.is_collected == "0")
-            .count()
-        )
-
-        return count
+    def insert_many(self, records):
+        db_session.bulk_save_objects(records)
+        db_session.commit()

@@ -15,7 +15,7 @@ class Sensor(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
-    def __init__(self, device_id, mac_addr, type, location, description=''):
+    def __init__(self, device_id, type, location, mac_addr='', description=''):
         self.device_id = device_id
         self.mac_addr = mac_addr
         self.type = type
@@ -46,7 +46,7 @@ class SensorData(Base):
     unit_string = Column(String)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string):
+    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string=''):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
