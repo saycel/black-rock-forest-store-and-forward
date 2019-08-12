@@ -58,8 +58,6 @@ class SensorData(Base):
     def __repr__(self):
         return f'<SensorData id:{self.id}, device_id:{self.device_id}, net_key:{self.net_key}>'
 
-    def decode(self, payload):
-        pass
 
     @property
     def serialize(self):
@@ -68,6 +66,7 @@ class SensorData(Base):
                     net_key=self.net_key,
                     field_name=self.field_name,
                     value=self.value,
+                    unit=self.unit_string,
                     created_at=self.created_at)
 
 
