@@ -96,7 +96,7 @@ bin/
 .ropeproject
 
 # idea
-.idea/
+.idea
 
 # miscellaneous files
 log/
