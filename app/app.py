@@ -11,8 +11,8 @@ def create_app():
         SECRET_KEY='dev',
     )
     api.init_app(app,
-                 title='Black Forest Api',
+                 title='Black Rock Forest Consortium',
                  version='0.1',
-                 description='A BLACK FOREST API')
+                 description='store and forward')
     
     return app

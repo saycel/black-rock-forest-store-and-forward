@@ -117,3 +117,5 @@ reports/
 # delete
 
 delete.after
+
+.vagrant
