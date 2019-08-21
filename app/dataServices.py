@@ -1,7 +1,7 @@
-import csv
 import io
 import pandas as pd
 from flask import jsonify
+from multiprocessing import Pool
 
 from app.database import db_session
 from app.models import SensorData
@@ -47,9 +47,18 @@ class CsvDataService:
         data = pd.read_csv(csv_file, delimiter=',', quotechar='"')
         rows = data.to_dict('records')
         units = rows[0]
-        res = []
+        tuples = []
         for row in rows[2:]:
-          res = res + create_records_dict(row, 'from_csv', 'from_csv', 'from_csv', units, row['TIMESTAMP'])
-        SensorRepository().insert_many(res)
+          tuples = tuples + create_records_dict(row, 'from_csv', 'from_csv', 'from_csv', units, row['TIMESTAMP'])
 
-        return len(res)
+        list_size = len(tuples)
+        chunks = list_size//4
+        chunk1 = tuples[0:chunks]
+        chunk2 = tuples[chunks:chunks*2]
+        chunk3 = tuples[chunks*2:chunks*3]
+        chunk4 = tuples[chunks*3:list_size]
+
+        with Pool(5) as p:
+            p.map(SensorRepository().insert_many, [chunk1, chunk2, chunk3, chunk4])
+        db_session.commit()
+        return len(tuples)
