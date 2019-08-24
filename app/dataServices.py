@@ -60,5 +60,4 @@ class CsvDataService:
 
         with Pool(5) as p:
             p.map(SensorRepository().insert_many, [chunk1, chunk2, chunk3, chunk4])
-        db_session.commit()
         return len(tuples)

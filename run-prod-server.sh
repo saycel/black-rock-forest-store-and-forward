@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 python -u mqtt_sub.py &
 python init_database.py

@@ -26,3 +26,5 @@ class SensorRepository:
 
     def insert_many(self, records):
         db_session.bulk_insert_mappings(SensorData, records)
+        db_session.commit()
+

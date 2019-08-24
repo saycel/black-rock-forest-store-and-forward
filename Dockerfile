@@ -1,6 +1,6 @@
-FROM python:3.7-alpine AS base
+FROM python:3.7 AS base
 LABEL maintainer="German Martinez"
-RUN apk add build-base postgresql-dev bash nano
+#RUN apk add build-base postgresql-dev bash nano
 COPY ./requirements.txt /requirements.txt
 RUN pip install --upgrade setuptools
 RUN pip install -r requirements.txt
