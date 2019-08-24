@@ -1,6 +1,6 @@
 import os 
 from flask import Flask
-from app.apis import api
+from backend.apis import api
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

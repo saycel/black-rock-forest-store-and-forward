@@ -1,6 +1,6 @@
 from flask import request
 from flask_restplus import Namespace, Resource
-from app.dataServices import CsvDataService
+from backend.dataServices import CsvDataService
 from datetime import datetime, timedelta
 
 api = Namespace('data_uploader',

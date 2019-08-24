@@ -3,4 +3,5 @@
 python -u mqtt_sub.py &
 python init_database.py
 alembic upgrade head
-flask run -p 2323 --host 0.0.0.0
+cd backend
+gunicorn -b 0.0.0.0:2323 -w 4 wsgi:brfc

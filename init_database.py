@@ -1,6 +1,6 @@
 from time import sleep
 
-from app.database import init_db, engine
+from backend.database import init_db, engine
 try:
     table = engine.dialect.has_table(engine, 'SensorData')
 except Exception:

@@ -3,9 +3,9 @@ import pandas as pd
 from flask import jsonify
 from multiprocessing import Pool
 
-from app.database import db_session
-from app.models import SensorData
-from app.repositories import SensorRepository
+from backend.database import db_session
+from backend.models import SensorData
+from backend.repositories import SensorRepository
 
 
 class SensorDataService:

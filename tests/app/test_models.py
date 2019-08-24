@@ -2,7 +2,7 @@ import datetime
 from unittest import TestCase
 from unittest.mock import patch
 
-from app.models import SensorData
+from backend.models import SensorData
 
 
 class testSensorData(TestCase):
@@ -21,7 +21,7 @@ class testSensorData(TestCase):
         sensData = SensorData('12', '11', '10', 'fieldName', 12, 'c')
         assert '<SensorData id:None, device_id:10, net_key:11>' == sensData.__str__()
 
-    @patch('app.models.datetime')
+    @patch('backend.models.datetime')
     def test_serialize(self, mock_datetime):
         mock_datetime.utcnow.return_value =  datetime.datetime(2019, 8, 12, 23, 42, 20, 990864)
         sensData = SensorData('12', '11', '10', 'fieldName', 12, 'c')

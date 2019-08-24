@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from app import dataServices
+from backend import dataServices
 
 
 class LoadFromCsv(TestCase):

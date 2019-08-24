@@ -1,7 +1,7 @@
 from flask import request
 from flask_restplus import Namespace, Resource
 
-from app.dataServices import SensorDataService
+from backend.dataServices import SensorDataService
 
 
 api = Namespace('sensor',

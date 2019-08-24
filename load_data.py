@@ -2,7 +2,7 @@ import os
 
 from sqlalchemyseeder.resolving_seeder import ResolvingSeeder
 
-from app.database import db_session
+from backend.database import db_session
 
 sd = ResolvingSeeder(db_session)
 dirname = os.path.dirname(__file__)

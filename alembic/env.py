@@ -6,10 +6,10 @@ from logging.config import fileConfig
 import sys
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from app.config import config as app_confing
+from backend.config import config as app_confing
 
 
-from app.models import Base
+from backend.models import Base
 
 import alembic
 
