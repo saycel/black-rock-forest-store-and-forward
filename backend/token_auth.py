@@ -1,5 +1,5 @@
 from _datetime import datetime, timedelta
-
+from dateutil.parser import parse as date_parse
 import jwt
 from flask import current_app
 
@@ -10,11 +10,23 @@ from backend.repositories import UserRepository
 
 def check(_request):
 
-    if not _request.authorization:
+    if not _request.headers.get('Authorization'):
         return {'message': 'Make sure you have Token  in the headers.'}, 400
+    try:
+        token = jwt.decode(_request.headers.get('Authorization').encode(),
+                             current_app.config['SECRET_KEY'],
+                             algorithms=['HS256'])
+    except Exception as e:
+        current_app.logger.debug(str(e))
+        return {'message': 'invalid token'}, 400
 
-    if jwt.decode(_request.authorization.encode(), current_app.config['SECRET_KEY'], algorithms=['HS256']):
-        return {'message': 'Wrong Token.'}, 403
+    if not isinstance(token, dict):
+        return {'message': 'invalid token'}, 400
+
+    token_date = date_parse (token['valid_until'])
+
+    if token_date < datetime.now():
+        return {'message': 'deprecated token'}
 
 
 def generate(email, password):
