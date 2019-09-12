@@ -1,5 +1,5 @@
 from backend.database import db_session
-from backend.models import SensorData
+from backend.models import SensorData, User
 
 
 class SensorRepository:
@@ -28,3 +28,25 @@ class SensorRepository:
         db_session.bulk_insert_mappings(SensorData, records)
         db_session.commit()
 
+
+class UserRepository:
+
+    def insert(self, email, password):
+        user = User.query.filter(User.email == email)
+        if user.count():
+            return {'message': f'given email {email} already in use'}, 400
+
+        user = User()
+        user.password = password.encode()
+        user.email = email
+        db_session.add(user)
+        db_session.commit()
+
+        return {'message': f'user with email {email} successfully created'}, 200
+
+    def get_by(self, email, as_dict=True):
+        user = User.query.filter(User.email == email)
+        if not user.count():
+            return {'message': f'given email {email} is not related to any user'}, 400
+
+        return user.first().to_dict() if as_dict else user.first()

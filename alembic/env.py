@@ -1,9 +1,7 @@
 from __future__ import with_statement
 
-import os
 from logging.config import fileConfig
 
-import sys
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from backend.config import config as app_confing

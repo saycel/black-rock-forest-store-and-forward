@@ -1,7 +1,59 @@
+import re
 from datetime import datetime
 
+import bcrypt
+import jwt
+from bcrypt import gensalt
+from flask import current_app
+from sqlalchemy.orm import validates
+
 from backend.database import Base
-from sqlalchemy import Column, String, DateTime, BigInteger, Float
+from sqlalchemy import Column, String, DateTime, BigInteger, Float, TypeDecorator, Binary
+
+email_regex = re.compile(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\."
+                         r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+
+
+class EncryptedPassword(TypeDecorator):
+    impl = Binary
+
+    def process_bind_param(self, value, dialect):
+        return bcrypt.hashpw(value, bcrypt.gensalt())
+
+    def process_result_value(self, value, dialect):
+        return value
+
+
+class HashedToken(TypeDecorator):
+    impl = Binary
+
+    def process_bind_param(self, value, dialect):
+        return jwt.encode(value, current_app.config['SECRET_KEY'], algorithm='HS256')
+
+    def process_result_value(self, value, dialect):
+        return value
+
+class User(Base):
+    __tablename__ = "user"
+    id = Column(BigInteger, autoincrement=True, primary_key=True)
+    email = Column(String(256), unique=True)
+    password = Column(EncryptedPassword, nullable=False)
+    auth_token = Column(HashedToken, nullable=True)
+
+    def __str__(self):
+        return f"User(id={self.id}, email={self.email})"
+
+    @validates('email')
+    def validate_email(self, key, address):
+        if not email_regex.match(address):
+            raise ValueError("not a valid email")
+        return address
+
+    def to_dict(self):
+        return {'email': self.email}
+
+    def valid_password(self, password):
+        return bcrypt.checkpw(password.encode(), self.password)
 
 
 class Sensor(Base):
