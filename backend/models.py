@@ -7,12 +7,24 @@ from flask import current_app
 from sqlalchemy.orm import validates
 
 from backend.database import Base
-from sqlalchemy import Column, String, DateTime, BigInteger, Float, TypeDecorator, Binary
+from sqlalchemy import (
+    Column,
+    String,
+    DateTime,
+    BigInteger,
+    Float,
+    TypeDecorator,
+    Binary,
+)
 
-email_regex = re.compile(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\."
-                         r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+email_regex = re.compile(
+    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\."
+    r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+)
 
-password_regex = re.compile(r"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$")
+password_regex = re.compile(
+    r"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+)
 
 
 class EncryptedPassword(TypeDecorator):
@@ -31,7 +43,7 @@ class HashedToken(TypeDecorator):
     def process_bind_param(self, value, dialect):
         if {} == value:
             return None
-        return jwt.encode(value, current_app.config['SECRET_KEY'], algorithm='HS256')
+        return jwt.encode(value, current_app.config["SECRET_KEY"], algorithm="HS256")
 
     def process_result_value(self, value, dialect):
         return value
@@ -47,26 +59,27 @@ class User(Base):
     def __str__(self):
         return f"User(id={self.id}, email={self.email})"
 
-    @validates('email')
+    @validates("email")
     def validate_email(self, key, address):
         if not email_regex.match(address):
             raise ValueError("not a valid email")
         return address
 
-    @validates('password')
+    @validates("password")
     def validate_password(self, key, password):
         if not password_regex.match(password.decode()):
-            raise ValueError("Password  must have: "
-                             "length greater than or equal to 8. "
-                             "one or more uppercase characters. "
-                             "one or more lowercase characters. "
-                             "one or more numeric values. "
-                             "one or more special characters. "
-                             )
+            raise ValueError(
+                "Password  must have: "
+                "length greater than or equal to 8. "
+                "one or more uppercase characters. "
+                "one or more lowercase characters. "
+                "one or more numeric values. "
+                "one or more special characters. "
+            )
         return password
 
     def to_dict(self):
-        return {'email': self.email}
+        return {"email": self.email}
 
     def valid_password(self, password):
         return checkpw(password.encode(), self.password)
@@ -83,7 +96,7 @@ class Sensor(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
-    def __init__(self, device_id, type, location, mac_addr='', description=''):
+    def __init__(self, device_id, type, location, mac_addr="", description=""):
         self.device_id = device_id
         self.mac_addr = mac_addr
         self.type = type
@@ -92,19 +105,21 @@ class Sensor(Base):
 
     @property
     def serialize(self):
-        return dict(device_id=self.device_id,
-                    mac_addr=self.mac_addr,
-                    type=self.type,
-                    location=self.location,
-                    description=self.description,
-                    created_at=self.created_at)
+        return dict(
+            device_id=self.device_id,
+            mac_addr=self.mac_addr,
+            type=self.type,
+            location=self.location,
+            description=self.description,
+            created_at=self.created_at,
+        )
 
     def __repr__(self):
-        return f'<Sensor id:{self.device_id}, type:{self.net_key}>'
+        return f"<Sensor id:{self.device_id}, type:{self.net_key}>"
 
 
 class SensorData(Base):
-    __tablename__ = 'sensordata'
+    __tablename__ = "sensordata"
     id = Column(BigInteger, autoincrement=True, primary_key=True)
     app_key = Column(String)
     net_key = Column(String)
@@ -114,7 +129,7 @@ class SensorData(Base):
     unit_string = Column(String)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string=''):
+    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string=""):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
@@ -122,20 +137,20 @@ class SensorData(Base):
         self.value = value
         self.unit_string = unit_string
 
-
     def __repr__(self):
-        return f'<SensorData id:{self.id}, device_id:{self.device_id}, net_key:{self.net_key}>'
-
+        return f"<SensorData id:{self.id}, device_id:{self.device_id}, net_key:{self.net_key}>"
 
     @property
     def serialize(self):
-        return dict(device_id=self.device_id,
-                    app_key=self.app_key,
-                    net_key=self.net_key,
-                    field_name=self.field_name,
-                    value=self.value,
-                    unit=self.unit_string,
-                    created_at=self.created_at)
+        return dict(
+            device_id=self.device_id,
+            app_key=self.app_key,
+            net_key=self.net_key,
+            field_name=self.field_name,
+            value=self.value,
+            unit=self.unit_string,
+            created_at=self.created_at,
+        )
 
 
 class SensorDebug(Base):
@@ -152,21 +167,23 @@ class SensorDebug(Base):
         self.message = message
 
     def __repr__(self):
-        return f'<SensorDebug id:{self.id}, device_id:{self.device_id}, code:{self.code}, message:{self.message}, created_at:{self.created_at}>'
+        return f"<SensorDebug id:{self.id}, device_id:{self.device_id}, code:{self.code}, message:{self.message}, created_at:{self.created_at}>"
 
     @property
     def serialize(self):
-        return dict(device_id=self.device_id,
-                    code=self.code,
-                    message=self.message,
-                    created_at=self.created_at)
+        return dict(
+            device_id=self.device_id,
+            code=self.code,
+            message=self.message,
+            created_at=self.created_at,
+        )
 
 
 class DebugCode(Base):
     __tablename__ = "debugcode"
     id = Column(BigInteger, autoincrement=True, primary_key=True)
     code = Column(String)
-    description=Column(String)
+    description = Column(String)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
@@ -176,9 +193,11 @@ class DebugCode(Base):
 
     @property
     def serialize(self):
-        return dict(code=self.code,
-                    description=self.description,
-                    created_at=self.created_at)
+        return dict(
+            code=self.code, description=self.description, created_at=self.created_at
+        )
 
     def __repr__(self):
-        return f'<SensorDebug id:{id}, code:{self.code}, description:{self.description}>'
+        return (
+            f"<SensorDebug id:{id}, code:{self.code}, description:{self.description}>"
+        )

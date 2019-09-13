@@ -3,30 +3,38 @@ from flask_restplus import Namespace, Resource
 from backend.dataServices import SensorDataService
 from backend.token_auth import auth_needed
 
-api = Namespace('sensor',
-                description='Expose sensor Data'
-                )
+api = Namespace("sensor", description="Expose sensor Data")
 
 
-@api.route('/all')
+@api.route("/all")
 class SensorResource(Resource):
     @auth_needed
     def get(self):
         return SensorDataService().get_all_sensor_data()
 
 
-@api.route('/collector/<app_key>/<net_key>/<device_id>/')
+@api.route("/collector/<app_key>/<net_key>/<device_id>/")
 class CollectorResource(Resource):
     def get(self, app_key, net_key, device_id):
         try:
             channels = request.args.to_dict()
-            for k,v in channels.items():
+            for k, v in channels.items():
                 try:
                     channels[k] = float(v)
                 except Exception as e:
-                    return dict(message=f"{k}:{v}, value is not a float or integer"), 400
-                SensorDataService().insert_many_from_http(app_key, net_key, device_id, channels)
+                    return (
+                        dict(message=f"{k}:{v}, value is not a float or integer"),
+                        400,
+                    )
+                SensorDataService().insert_many_from_http(
+                    app_key, net_key, device_id, channels
+                )
         except Exception as e:
-            return dict(message=f'something went wrong trying to insert values with http  error:{e.args[0]}'), 500
+            return (
+                dict(
+                    message=f"something went wrong trying to insert values with http  error:{e.args[0]}"
+                ),
+                500,
+            )
 
-        return dict(message='success')
+        return dict(message="success")
