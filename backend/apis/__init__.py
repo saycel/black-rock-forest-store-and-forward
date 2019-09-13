@@ -8,7 +8,7 @@ class BlackForestApi(Api):
         self._doc = doc
 
 
-api = BlackForestApi()
+api = BlackForestApi(doc='/swagger/')
 api.add_namespace(login_api)
 api.add_namespace(forest_data_api)
 api.add_namespace(data_uploader_api)
