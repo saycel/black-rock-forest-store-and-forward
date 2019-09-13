@@ -1,12 +1,14 @@
 FROM python:3.7 AS base
 LABEL maintainer="German Martinez"
-#RUN apk add build-base postgresql-dev bash nano
-COPY ./requirements.txt /requirements.txt
+RUN apt-get update
+RUN apt-get install build-essential libffi-dev python-dev -y
+COPY requirements-dev.txt /requirements.txt
 RUN pip install --upgrade setuptools
 RUN pip install -r requirements.txt
+RUN pip install bcrypt
 
 FROM base
-COPY . /black-forest
-WORKDIR /black-forest
+COPY . /brfc
+WORKDIR /brfc
 
-ENTRYPOINT [ "/black-forest/run-prod-server.sh" ]
+ENTRYPOINT [ "/brfc/run-prod-server.sh" ]

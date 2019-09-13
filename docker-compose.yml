@@ -5,6 +5,7 @@ version: '3'
 services:
 
   database:
+    container_name: database
     image: postgres:11-alpine
     restart: unless-stopped
     network_mode: host
@@ -12,11 +13,12 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: black_forest
     volumes:
-      - black-forest:/var/lib/postgresql/data
+      - brfc:/var/lib/postgresql/data
     depends_on:
       - mosquitto
   
   mosquitto:
+    container_name: mosquitto
     image: eclipse-mosquitto:1.5.8
     restart: unless-stopped 
     network_mode: host
@@ -24,16 +26,18 @@ services:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
   
   app:
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - PYTHONPATH=/black-forest
+      - PYTHONPATH=/brfc
     network_mode: host
     depends_on:
       - mosquitto
-      - postgres
+      - database
+
 
 volumes:
-  black-forest:
+  brfc:

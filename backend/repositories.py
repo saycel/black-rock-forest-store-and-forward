@@ -35,12 +35,14 @@ class UserRepository:
         user = User.query.filter(User.email == email)
         if user.count():
             return {'message': f'given email {email} already in use'}, 400
-
-        user = User()
-        user.password = password.encode()
-        user.email = email
-        db_session.add(user)
-        db_session.commit()
+        try:
+            user = User()
+            user.password = password.encode()
+            user.email = email
+            db_session.add(user)
+            db_session.commit()
+        except ValueError as e:
+            return {'message': f'{str(e)}'}, 400
 
         return {'message': f'user with email {email} successfully created'}, 200
 

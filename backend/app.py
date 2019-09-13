@@ -1,10 +1,11 @@
-import os 
-from flask import Flask, request
-from .apis import api
-import backend.token_auth as auth
+import os
+
+from flask import Flask
+
+from backend.apis import api
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-auth_free_uri = ['/user/login?', '/user/signin?']
+
 
 def create_app():
     app = Flask(__name__)
@@ -16,10 +17,5 @@ def create_app():
                  title='Black Rock Forest Consortium',
                  version='0.1',
                  description='store and forward')
-
-    @app.before_request
-    def before_request():
-        if request.full_path not in auth_free_uri:
-            return auth.check(request)
 
     return app

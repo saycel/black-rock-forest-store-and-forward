@@ -1,7 +1,7 @@
 from flask import request
 from flask_restplus import Namespace, Resource
 from backend.dataServices import SensorDataService
-
+from backend.token_auth import auth_needed
 
 api = Namespace('sensor',
                 description='Expose sensor Data'
@@ -10,6 +10,7 @@ api = Namespace('sensor',
 
 @api.route('/all')
 class SensorResource(Resource):
+    @auth_needed
     def get(self):
         return SensorDataService().get_all_sensor_data()
 

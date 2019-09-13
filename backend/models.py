@@ -1,9 +1,8 @@
 import re
 from datetime import datetime
 
-import bcrypt
 import jwt
-from bcrypt import gensalt
+from bcrypt import gensalt, hashpw, checkpw
 from flask import current_app
 from sqlalchemy.orm import validates
 
@@ -13,12 +12,14 @@ from sqlalchemy import Column, String, DateTime, BigInteger, Float, TypeDecorato
 email_regex = re.compile(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\."
                          r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
 
+password_regex = re.compile(r"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$")
+
 
 class EncryptedPassword(TypeDecorator):
     impl = Binary
 
     def process_bind_param(self, value, dialect):
-        return bcrypt.hashpw(value, bcrypt.gensalt())
+        return hashpw(value, gensalt())
 
     def process_result_value(self, value, dialect):
         return value
@@ -28,17 +29,20 @@ class HashedToken(TypeDecorator):
     impl = Binary
 
     def process_bind_param(self, value, dialect):
+        if {} == value:
+            return None
         return jwt.encode(value, current_app.config['SECRET_KEY'], algorithm='HS256')
 
     def process_result_value(self, value, dialect):
         return value
+
 
 class User(Base):
     __tablename__ = "user"
     id = Column(BigInteger, autoincrement=True, primary_key=True)
     email = Column(String(256), unique=True)
     password = Column(EncryptedPassword, nullable=False)
-    auth_token = Column(HashedToken, nullable=True)
+    auth_token = Column(HashedToken, default={}, nullable=True)
 
     def __str__(self):
         return f"User(id={self.id}, email={self.email})"
@@ -49,11 +53,23 @@ class User(Base):
             raise ValueError("not a valid email")
         return address
 
+    @validates('password')
+    def validate_password(self, key, password):
+        if not password_regex.match(password.decode()):
+            raise ValueError("Password  must have: "
+                             "length greater than or equal to 8. "
+                             "one or more uppercase characters. "
+                             "one or more lowercase characters. "
+                             "one or more numeric values. "
+                             "one or more special characters. "
+                             )
+        return password
+
     def to_dict(self):
         return {'email': self.email}
 
     def valid_password(self, password):
-        return bcrypt.checkpw(password.encode(), self.password)
+        return checkpw(password.encode(), self.password)
 
 
 class Sensor(Base):
