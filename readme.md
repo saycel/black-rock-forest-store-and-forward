@@ -227,10 +227,9 @@ Authorization=**JWT-TOKEN-GENERATED-BEFORE**
 To upload a csv follow the steps:
 
 1) The csv file must have as headers:
-    the name of the Column
-2) The csv file mist have in the second line, a measurement unit for the column.
-3) From the third line in advance comes the data
-4) Only float data is support
+    the name of the Column.
+2) The csv file must have in the second line, a unit of measurement for the corresponding column.
+3) From the third line in advance comes the data, only float data is support.
 
 For example:
 ```csv
