@@ -167,7 +167,8 @@ class SensorDebug(Base):
         self.message = message
 
     def __repr__(self):
-        return f"<SensorDebug id:{self.id}, device_id:{self.device_id}, code:{self.code}, message:{self.message}, created_at:{self.created_at}>"
+        return f"<SensorDebug id:{self.id}, device_id:{self.device_id}, " \
+            f"code:{self.code}, message:{self.message}, created_at:{self.created_at}>"
 
     @property
     def serialize(self):

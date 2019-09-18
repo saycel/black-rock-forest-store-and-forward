@@ -80,6 +80,35 @@ Follow the steps to install and run the project:
 
 the ip of the VM is 192.168.33.10  and have to be use as **RPI-IP** on incoming steps
 
+# Register
+To start using the platform you need to do a register first by sending a post request to http://**SERVER-IP**:2323/user/register
+with the following json payload:
+
+```json 
+{	
+	"email": "avalid@email.com",
+	"password": "4veryS4vePass!!"
+}
+```
+
+# Login
+Once you are register to get a token send a post request to http://**SERVER-IP**:2323/user/register
+with the following json payload:
+
+```json5
+{	
+	"email": "avalid@email.com",
+	"password": "4veryS4vePass!!"
+}
+```
+
+you will receive a response with a JWT token like this:
+
+```json5
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RlckBnZXJtYW4uY29tIiwidmFsaWRfdW50aWwiOiIyMDIwLTAzLTE2IDE1OjMzOjQ2LjEwNDEyMCJ9._g1OMeiEoLaM7e3eiSjHcV5pKi05MaMzJVzNTMq8LL8"
+}
+```
 
 # Test
 In order to know if the rest api is up and running,first make sure the the pc where you installed postman and the RPI are in the same lan:
@@ -162,6 +191,9 @@ Generic:
 Example:  
     http://10.0.0.115:2323/sensor/all
 
+Add to the request headers the following:
+
+Authorization=**JWT-TOKEN-GENERATED-BEFORE**
 
   1) open postman
   2) use http://**RPI-IP**:2323/sensor/all
