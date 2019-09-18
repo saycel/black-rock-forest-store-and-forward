@@ -236,12 +236,12 @@ For example:
 ```csv
 temperature, pressure
 °C, hPa
-12, 1000
+12.0, 1000.0
 ```
 
 The previous will be load in the database as
 
 |id|app_key|net_key|device_id|value|created_at|field_name|unit_string|
 |---|---|---|---|---|---|---|---|
-|1|from_csv|from_csv|from_csv|12|2014-11-2800:00:00|temperature|°C|
-|2|from_csv|from_csv|from_csv|1000|2014-11-2800:00:00|pressure|hPa|
+|1|from_csv|from_csv|from_csv|12.0|2014-11-2800:00:00|temperature|°C|
+|2|from_csv|from_csv|from_csv|1000.0|2014-11-2800:00:00|pressure|hPa|
