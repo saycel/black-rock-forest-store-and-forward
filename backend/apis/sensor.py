@@ -26,9 +26,9 @@ class CollectorResource(Resource):
                         dict(message=f"{k}:{v}, value is not a float or integer"),
                         400,
                     )
-                SensorDataService().insert_many_from_http(
-                    app_key, net_key, device_id, channels
-                )
+            SensorDataService().insert_many_from_http(
+                app_key, net_key, device_id, channels
+            )
         except Exception as e:
             return (
                 dict(

@@ -9,12 +9,12 @@ import json
 def insert_debug(msg):
     try:
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
-        m_in = msg.payload.decode('UTF-8').split(';')
+        m_in = msg.payload.decode("UTF-8").split(";")
 
         if isinstance(m_in, list) and len(m_in) == 3:
-            db_session.add(SensorDebug(device_id=m_in[0],
-                                       code=m_in[1],
-                                       message=m_in[2]))
+            db_session.add(
+                SensorDebug(device_id=m_in[0], code=m_in[1], message=m_in[2])
+            )
             db_session.commit()
         else:
             print("Debug Message is not with the right format")
@@ -28,13 +28,17 @@ def insert_sensor_data(msg):
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
         m_in = json.loads(msg.payload)
 
-        for key, value in m_in['channels'].items():
-            db_session.add(SensorData(m_in['app_key'],
-                                      m_in['net_key'],
-                                      m_in['device_id'],
-                                      key,
-                                      value,
-                                      min['unit']))
+        for key, value in m_in["channels"].items():
+            db_session.add(
+                SensorData(
+                    m_in["app_key"],
+                    m_in["net_key"],
+                    m_in["device_id"],
+                    key,
+                    value,
+                    min["unit"],
+                )
+            )
         db_session.commit()
     except Exception:
         print(f"error trying to insert {m_in}")
@@ -45,9 +49,9 @@ def on_connect(mqttc, obj, flags, rc):
 
 
 def on_message(mqttc, obj, msg):
-    if 'forest' in msg.topic:
+    if "forest" in msg.topic:
         insert_sensor_data(msg)
-    elif 'debug' in msg.topic:
+    elif "debug" in msg.topic:
         insert_debug(msg)
 
 

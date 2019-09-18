@@ -10,7 +10,6 @@ api = Namespace("data_uploader", description="Upload sensor data from csv files"
 
 @api.route("/data")
 class Data(Resource):
-    @auth_needed
     def put(self):
         start_t = datetime.utcnow()
         inserted_records = CsvDataService().insert_many_from_http(request.data)

@@ -3,7 +3,6 @@ import pandas as pd
 from flask import jsonify
 from multiprocessing import Pool
 
-from backend.database import db_session
 from backend.models import SensorData
 from backend.repositories import SensorRepository
 
@@ -19,7 +18,7 @@ class SensorDataService:
         for field_name, value in channels.items():
             records.append(SensorData(app_key, net_key, device_id, field_name, value))
 
-        SensorRepository.insert_many(records)
+        SensorRepository().insert_many(records)
 
 
 def create_records_dict(row, app_key, net_key, device_id, units, created_at):
@@ -58,5 +57,8 @@ class CsvDataService:
         chunk4 = tuples[chunks * 3 : list_size]
 
         with Pool(5) as p:
-            p.map(SensorRepository().insert_many, [chunk1, chunk2, chunk3, chunk4])
+            p.map(
+                SensorRepository().insert_many_from_csv,
+                [chunk1, chunk2, chunk3, chunk4],
+            )
         return len(tuples)

@@ -12,19 +12,35 @@ class SensorRepository(object):
         return data
 
     def insert_one(self, record):
-        db_session.add(record)
-        db_session.commit()
+        try:
+            db_session.add(record)
+            db_session.commit()
+        except Exception:
+            db_session.rollback()
+            raise
 
     def insert_many(self, records):
-        db_session.bulk_insert_mappings(SensorData, records)
-        db_session.commit()
+        try:
+            db_session.bulk_save_objects(records)
+            db_session.commit()
+        except Exception:
+            db_session.rollback()
+            raise
+
+    def insert_many_from_csv(self, records):
+        try:
+            db_session.bulk_insert_mappings(SensorData, records)
+            db_session.commit()
+        except Exception:
+            db_session.rollback()
+            raise
 
 
 class UserRepository(object):
     def insert(self, email, password):
         user = User.query.filter(User.email == email)
         if user.count():
-            return {"message": f"given email {email} already in use"}, 400
+            return {"message": "email or passowrd incorrect"}, 400
         try:
             user = User()
             user.password = password.encode()
@@ -32,6 +48,7 @@ class UserRepository(object):
             db_session.add(user)
             db_session.commit()
         except ValueError as e:
+            db_session.rollback()
             return {"message": f"{str(e)}"}, 400
 
         return {"message": f"user with email {email} successfully created"}, 200
@@ -39,6 +56,6 @@ class UserRepository(object):
     def get_by(self, email, as_dict=True):
         user = User.query.filter(User.email == email)
         if not user.count():
-            return {"message": f"given email {email} is not related to any user"}, 400
+            return {"message": "email or passowrd incorrect"}, 400
 
         return user.first().to_dict() if as_dict else user.first()
