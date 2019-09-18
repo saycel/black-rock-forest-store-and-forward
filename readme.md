@@ -198,8 +198,8 @@ Authorization=**JWT-TOKEN-GENERATED-BEFORE**
   1) open postman
   2) use http://**RPI-IP**:2323/sensor/all
   3) click the send button next to url textbox
-  4) in case you have records in the db you will receive a list of json   
-  ```json
+  4) In case you have records in the db you will receive a list of json   
+  ```json5
     [
         {
             "app_key": "1",
@@ -221,10 +221,27 @@ Authorization=**JWT-TOKEN-GENERATED-BEFORE**
         }
     ]
 ```  
-    
- 
 
- 
+# Upload csv File
 
+To upload a csv follow the steps:
 
+1) The csv file must have as headers:
+    the name of the Column
+2) The csv file mist have in the second line, a measurement unit for the column.
+3) From the third line in advance comes the data
+4) Only float data is support
 
+For example:
+```csv
+temperature, pressure
+°C, hPa
+12, 1000
+```
+
+The previous will be load in the database as
+
+|id|app_key|net_key|device_id|value|created_at|field_name|unit_string|
+|---|---|---|---|---|---|---|---|
+|1|from_csv|from_csv|from_csv|12|2014-11-2800:00:00|temperature|°C|
+|2|from_csv|from_csv|from_csv|1000|2014-11-2800:00:00|pressure|hPa|
