@@ -1,4 +1,6 @@
 import io
+from math import ceil
+
 import pandas as pd
 from flask import jsonify
 from multiprocessing import Pool
@@ -8,9 +10,11 @@ from backend.repositories import SensorRepository
 
 
 class SensorDataService:
-    def get_all_sensor_data(self):
-        tuples = SensorRepository().get_all_sensor_data()
+
+    def get_sensor_data(self, page_size=100, page=1):
+        total_count, tuples = SensorRepository().get_sensor_data(page_size, page)
         result = [tuple.serialize for tuple in tuples]
+        result = [dict(page=page, total_pages=total_count//page_size, total_count=total_count)] + result
         return jsonify(result)
 
     def insert_many_from_http(self, app_key, net_key, device_id, channels):

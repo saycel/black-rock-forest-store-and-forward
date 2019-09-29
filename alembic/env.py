@@ -4,8 +4,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from backend.config import config as app_confing
-
+from backend import config as app_confing
 
 from backend.models import Base
 

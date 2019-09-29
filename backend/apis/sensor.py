@@ -6,11 +6,13 @@ from backend.token_auth import auth_needed
 api = Namespace("sensor", description="Expose sensor Data")
 
 
-@api.route("/all")
+@api.route("/data/<int:page_size>/<int:page>")
 class SensorResource(Resource):
     @auth_needed
-    def get(self):
-        return SensorDataService().get_all_sensor_data()
+    def get(self, page_size, page):
+        if page_size < 0 or page < 0:
+            return dict(message='page_size and page must be positive integers'), 400
+        return SensorDataService().get_sensor_data(page_size, page)
 
 
 @api.route("/collector/<app_key>/<net_key>/<device_id>/")
