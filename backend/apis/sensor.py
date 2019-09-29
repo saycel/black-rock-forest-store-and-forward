@@ -12,6 +12,8 @@ class SensorResource(Resource):
     def get(self, page_size, page):
         if page_size < 0 or page < 0:
             return dict(message='page_size and page must be positive integers'), 400
+        if page_size > 500:
+            return dict(message="page_size limit 500")
         return SensorDataService().get_sensor_data(page_size, page)
 
 
