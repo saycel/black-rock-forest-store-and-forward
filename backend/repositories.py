@@ -4,9 +4,9 @@ from backend.models import SensorData, User
 
 class SensorRepository(object):
 
-    def get_sensor_data(self, page_size=20, page=1):
+    def get_sensor_data(self, user_id, page_size=20, page=1):
         offset = page_size * page-1
-        data = db_session.query(SensorData)
+        data = db_session.query(SensorData).filter(SensorData.user_id == user_id)
         return data.count(), data.limit(page_size).offset(offset).all()
 
     def insert_one(self, record):

@@ -3,7 +3,7 @@ from functools import wraps
 
 from dateutil.parser import parse as date_parse
 import jwt
-from flask import current_app, request
+from flask import current_app, request, g
 
 from backend.database import db_session
 from backend.models import User
@@ -23,6 +23,11 @@ def check(_request):
     except Exception as e:
         current_app.logger.debug(str(e))
         return {"message": "invalid token"}, 400
+
+    g.current_user = db_session.query(User).filter(User.email == token['email']).first()
+
+    if not g.current_user:
+        return {'message': 'user not found'}, 404
 
     if not isinstance(token, dict):
         return {"message": "invalid token"}, 400

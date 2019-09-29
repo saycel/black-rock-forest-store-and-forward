@@ -1,8 +1,7 @@
 import io
-from math import ceil
 
 import pandas as pd
-from flask import jsonify
+from flask import jsonify, g
 from multiprocessing import Pool
 
 from backend.models import SensorData
@@ -12,7 +11,7 @@ from backend.repositories import SensorRepository
 class SensorDataService:
 
     def get_sensor_data(self, page_size=100, page=1):
-        total_count, tuples = SensorRepository().get_sensor_data(page_size, page)
+        total_count, tuples = SensorRepository().get_sensor_data(g.current_user.id, page_size, page)
         result = [tuple.serialize for tuple in tuples]
         result = [dict(page=page, total_pages=total_count//page_size, total_count=total_count)] + result
         return jsonify(result)
@@ -20,14 +19,15 @@ class SensorDataService:
     def insert_many_from_http(self, app_key, net_key, device_id, channels):
         records = []
         for field_name, value in channels.items():
-            records.append(SensorData(app_key, net_key, device_id, field_name, value))
+            records.append(SensorData(app_key, net_key, device_id, field_name, value, g.current_user.id))
 
         SensorRepository().insert_many(records)
 
 
-def create_records_dict(row, app_key, net_key, device_id, units, created_at):
+def create_records_dict(row, user_id, app_key, net_key, device_id, units, created_at):
     return [
         {
+            "user_id": user_id,
             "app_key": app_key,
             "net_key": net_key,
             "device_id": device_id,
@@ -42,7 +42,7 @@ def create_records_dict(row, app_key, net_key, device_id, units, created_at):
 
 
 class CsvDataService:
-    def insert_many_from_http(self, csv_file):
+    def insert_many_from_http(self, csv_file, user_id):
         csv_file = io.StringIO(csv_file.decode())
         data = pd.read_csv(csv_file, delimiter=",", quotechar='"')
         rows = data.to_dict("records")
@@ -50,7 +50,7 @@ class CsvDataService:
         tuples = []
         for row in rows[2:]:
             tuples = tuples + create_records_dict(
-                row, "from_csv", "from_csv", "from_csv", units, row["TIMESTAMP"]
+                row, user_id, "from_csv", "from_csv", "from_csv", units, row["TIMESTAMP"]
             )
 
         list_size = len(tuples)

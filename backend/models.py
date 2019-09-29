@@ -130,12 +130,13 @@ class SensorData(Base):
     user_id = Column(Integer)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, app_key, net_key, device_id, field_name, value, unit_string=""):
+    def __init__(self, app_key, net_key, device_id, field_name, value, user_id="", unit_string=""):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
         self.field_name = field_name
         self.value = value
+        self.user_id = user_id
         self.unit_string = unit_string
 
     def __repr__(self):

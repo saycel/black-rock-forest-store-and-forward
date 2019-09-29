@@ -19,6 +19,7 @@ class SensorResource(Resource):
 
 @api.route("/collector/<app_key>/<net_key>/<device_id>/")
 class CollectorResource(Resource):
+    @auth_needed
     def get(self, app_key, net_key, device_id):
         try:
             channels = request.args.to_dict()
