@@ -22,8 +22,6 @@ services:
     image: eclipse-mosquitto:1.5.8
     restart: unless-stopped 
     network_mode: host
-    volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
   
   app:
     container_name: app
