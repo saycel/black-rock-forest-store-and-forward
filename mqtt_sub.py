@@ -36,7 +36,7 @@ def insert_sensor_data(msg):
                     m_in["device_id"],
                     key,
                     value,
-                    min["unit"],
+                    m_in["unit"],
                 )
             )
         db_session.commit()
