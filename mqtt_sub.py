@@ -31,12 +31,12 @@ def insert_sensor_data(msg):
         for key, value in m_in["channels"].items():
             db_session.add(
                 SensorData(
-                    m_in["app_key"],
-                    m_in["net_key"],
-                    m_in["device_id"],
-                    key,
-                    value,
-                    m_in["unit"],
+                    app_key=m_in["app_key"],
+                    net_key=m_in["net_key"],
+                    device_id=m_in["device_id"],
+                    field_name=key,
+                    value=value,
+                    unit_string=m_in["unit"],
                 )
             )
         db_session.commit()
