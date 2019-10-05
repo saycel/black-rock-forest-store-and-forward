@@ -11,7 +11,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 def create_app():
     app = Flask(__name__)
     app.config.from_mapping(
-        SECRET_KEY=SECRET_KEY, HTTP_AUTHORIZATION=HTTP_AUTHORIZATION
+        SECRET_KEY=SECRET_KEY
     )
     api.init_app(
         app,

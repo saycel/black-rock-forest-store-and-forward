@@ -67,8 +67,8 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "file", source: ".", destination: "black-forest"
+  config.vm.provision "file", source: ".", destination: "brfc"
   config.vm.provision :docker
-  config.vm.provision :docker_compose, yml: "/home/vagrant/black-forest/docker-compose.yml", rebuild: true, run: "always"
+  config.vm.provision :docker_compose, yml: "/home/vagrant/brfc/docker-compose.yml", rebuild: true, run: "always"
 
 end
