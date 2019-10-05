@@ -15,7 +15,8 @@ from sqlalchemy import (
     Float,
     TypeDecorator,
     Binary,
-    Integer)
+    Integer,
+)
 
 email_regex = re.compile(
     r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\."
@@ -130,7 +131,16 @@ class SensorData(Base):
     user_id = Column(Integer)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-    def __init__(self, app_key, net_key, device_id, field_name, value, user_id=999, unit_string=""):
+    def __init__(
+        self,
+        app_key,
+        net_key,
+        device_id,
+        field_name,
+        value,
+        user_id=999,
+        unit_string="",
+    ):
         self.app_key = app_key
         self.net_key = net_key
         self.device_id = device_id
@@ -169,8 +179,10 @@ class SensorDebug(Base):
         self.message = message
 
     def __repr__(self):
-        return f"<SensorDebug id:{self.id}, device_id:{self.device_id}, " \
+        return (
+            f"<SensorDebug id:{self.id}, device_id:{self.device_id}, "
             f"code:{self.code}, message:{self.message}, created_at:{self.created_at}>"
+        )
 
     @property
     def serialize(self):

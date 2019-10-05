@@ -3,13 +3,16 @@ import os
 from flask import Flask
 
 from backend.apis import api
+from backend.config import SECRET_KEY, HTTP_AUTHORIZATION
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_mapping(SECRET_KEY="TRU3S3CR3T", HTTP_AUTHORIZATION="token")
+    app.config.from_mapping(
+        SECRET_KEY=SECRET_KEY, HTTP_AUTHORIZATION=HTTP_AUTHORIZATION
+    )
     api.init_app(
         app,
         title="Black Rock Forest Consortium",

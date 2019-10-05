@@ -13,6 +13,8 @@ class Data(Resource):
     @auth_needed
     def put(self):
         start_t = datetime.utcnow()
-        inserted_records = CsvDataService().insert_many_from_http(request.data, g.current_user.id)
+        inserted_records = CsvDataService().insert_many_from_http(
+            request.data, g.current_user.id
+        )
         took = datetime.utcnow() - start_t
         return {"took": str(took), "inserted": inserted_records, "status": "success"}

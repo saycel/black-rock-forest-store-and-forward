@@ -24,10 +24,10 @@ def check(_request):
         current_app.logger.debug(str(e))
         return {"message": "invalid token"}, 400
 
-    g.current_user = db_session.query(User).filter(User.email == token['email']).first()
+    g.current_user = db_session.query(User).filter(User.email == token["email"]).first()
 
     if not g.current_user:
-        return {'message': 'user not found'}, 404
+        return {"message": "user not found"}, 404
 
     if not isinstance(token, dict):
         return {"message": "invalid token"}, 400
