@@ -1,5 +1,3 @@
-from pprint import pprint
-
 import paho.mqtt.client as mqtt
 from backend.database import db_session
 from backend.models import SensorData, SensorDebug

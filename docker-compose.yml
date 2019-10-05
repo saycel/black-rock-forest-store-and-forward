@@ -9,11 +9,9 @@ services:
     image: postgres:11-alpine
     restart: unless-stopped
     network_mode: host
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: black_forest
+    env_file: .env
     volumes:
-      - brfc:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
     depends_on:
       - mosquitto
   
@@ -29,8 +27,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    environment:
-      - PYTHONPATH=/brfc
+    env_file: .env
     network_mode: host
     depends_on:
       - mosquitto
@@ -38,4 +35,4 @@ services:
 
 
 volumes:
-  brfc:
+  database:
