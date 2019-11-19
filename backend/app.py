@@ -10,9 +10,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_mapping(
-        SECRET_KEY=SECRET_KEY
-    )
+    app.config.from_mapping(SECRET_KEY=SECRET_KEY)
     api.init_app(
         app,
         title="Black Rock Forest Consortium",
