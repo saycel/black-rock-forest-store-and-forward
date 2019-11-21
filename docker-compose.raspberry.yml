@@ -1,0 +1,29 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+services:
+
+  database:
+    container_name: database
+    image: postgres:11-alpine
+    restart: unless-stopped
+    network_mode: host
+    env_file: .env
+    volumes:
+      - database:/var/lib/postgresql/data
+  
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    network_mode: host
+    depends_on:
+      - database
+
+
+volumes:
+  database:
