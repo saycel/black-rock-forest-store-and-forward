@@ -5,8 +5,8 @@ from backend.repositories import SensorRepository
 
 
 class SensorDataService:
-    def get_sensor_data(self, page_size=100, page=1):
-        total_count, tuples = SensorRepository().get_sensor_data(page_size=page_size, page=page
+    def get_sensor_data(self, page_size=100, page=1, order="desc"):
+        total_count, tuples = SensorRepository().get_sensor_data(page_size=page_size, page=page, order=order
         )
         result = [tuple.serialize for tuple in tuples]
         result = [

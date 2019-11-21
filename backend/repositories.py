@@ -3,10 +3,15 @@ from backend.models import SensorData, User
 
 
 class SensorRepository(object):
-    def get_sensor_data(self, user_id=999, page_size=20, page=1):
+    def get_sensor_data(self, user_id=999, page_size=20, page=1, order="desc"):
         offset = page_size * (page - 1)
         data = db_session.query(SensorData).filter(SensorData.user_id == user_id)
-        return data.count(), data.limit(page_size).offset(offset).all()
+        if order == 'asc':
+          order_by = SensorData.created_at.asc()
+        else:
+          order_by = SensorData.created_at.desc()
+
+        return data.count(), data.order_by(order_by).limit(page_size).offset(offset).all()
 
     def insert_one(self, record):
         try:

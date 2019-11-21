@@ -7,13 +7,14 @@ api = Namespace("sensor", description="Expose sensor Data")
 
 
 @api.route("/data/<int:page_size>/<int:page>")
+@api.route("/data/<int:page_size>/<int:page>/<string:order>")
 class SensorResource(Resource):
-    def get(self, page_size, page):
+    def get(self, page_size, page, order="desc"):
         if page_size < 0 or page < 0:
             return dict(message="page_size and page must be positive integers"), 400
         if page_size > 500:
             return dict(message="page_size limit 500")
-        return SensorDataService().get_sensor_data(page_size, page)
+        return SensorDataService().get_sensor_data(page_size, page, order)
 
 
 @api.route("/collector/<app_key>/<net_key>/<device_id>/")
