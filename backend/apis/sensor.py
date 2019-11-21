@@ -8,7 +8,6 @@ api = Namespace("sensor", description="Expose sensor Data")
 
 @api.route("/data/<int:page_size>/<int:page>")
 class SensorResource(Resource):
-    @auth_needed
     def get(self, page_size, page):
         if page_size < 0 or page < 0:
             return dict(message="page_size and page must be positive integers"), 400
@@ -19,7 +18,6 @@ class SensorResource(Resource):
 
 @api.route("/collector/<app_key>/<net_key>/<device_id>/")
 class CollectorResource(Resource):
-    @auth_needed
     def get(self, app_key, net_key, device_id):
         try:
             channels = request.args.to_dict()

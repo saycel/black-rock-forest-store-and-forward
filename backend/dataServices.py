@@ -6,8 +6,7 @@ from backend.repositories import SensorRepository
 
 class SensorDataService:
     def get_sensor_data(self, page_size=100, page=1):
-        total_count, tuples = SensorRepository().get_sensor_data(
-            g.current_user.id, page_size, page
+        total_count, tuples = SensorRepository().get_sensor_data(page_size=page_size, page=page
         )
         result = [tuple.serialize for tuple in tuples]
         result = [
@@ -22,7 +21,7 @@ class SensorDataService:
         for field_name, value in channels.items():
             records.append(
                 SensorData(
-                    app_key, net_key, device_id, field_name, value, g.current_user.id
+                    app_key=app_key, net_key=net_key, device_id=device_id, field_name=field_name, value=value
                 )
             )
 

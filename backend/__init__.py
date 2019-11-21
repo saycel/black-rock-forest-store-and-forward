@@ -3,7 +3,7 @@ from functools import wraps
 
 
 def disable_for_raspberry(f):
-    """Decorator function. disable the functions for raspberry pi."""
+    """Decorator function. disable the function for raspberry pi."""
 
     @wraps(f)
     def wrap(*args, **kwargs):
