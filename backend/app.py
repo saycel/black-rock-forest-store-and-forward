@@ -1,16 +1,18 @@
 import os
 
 from flask import Flask
+from flask_mqtt import Mqtt
 
+from backend import config
 from backend.apis import api
-from backend.config import SECRET_KEY, HTTP_AUTHORIZATION
 
+mqtt_broker = Mqtt()
 basedir = os.path.abspath(os.path.dirname(__file__))
-
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_mapping(SECRET_KEY=SECRET_KEY)
+    app.config.from_object(config)
+    mqtt_broker.init_app(app)
     api.init_app(
         app,
         title="Black Rock Forest Consortium",

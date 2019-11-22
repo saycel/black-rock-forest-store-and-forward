@@ -1,5 +1,6 @@
-from flask import request
+from flask import request, current_app
 from flask_restplus import Namespace, Resource
+
 from backend.dataServices import SensorDataService
 from backend.token_auth import auth_needed
 
@@ -21,17 +22,8 @@ class SensorResource(Resource):
 class CollectorResource(Resource):
     def get(self, app_key, net_key, device_id):
         try:
-            channels = request.args.to_dict()
-            for k, v in channels.items():
-                try:
-                    channels[k] = float(v)
-                except Exception as e:
-                    return (
-                        dict(message=f"{k}:{v}, value is not a float or integer"),
-                        400,
-                    )
             SensorDataService().insert_many_from_http(
-                app_key, net_key, device_id, channels
+                app_key, net_key, device_id, request.args.to_dict()
             )
         except Exception as e:
             return (

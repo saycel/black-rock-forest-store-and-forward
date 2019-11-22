@@ -1,3 +1,5 @@
+import os
+
 import paho.mqtt.client as mqtt
 from backend.database import db_session
 from backend.models import SensorData, SensorDebug
@@ -71,7 +73,7 @@ mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
 mqttc.on_subscribe = on_subscribe
 mqttc.on_log = on_log
-mqttc.connect("127.0.0.1", 1883, 60)
+mqttc.connect(os.environ.get("MQTT_BROKER") or "localhost", 1883, 60)
 mqttc.subscribe("forest", 0)
 mqttc.subscribe("debug", 0)
 
