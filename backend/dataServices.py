@@ -23,6 +23,7 @@ class SensorDataService:
         self, app_key, net_key, device_id, channels, unit_string="U"
     ):
         from backend.app import mqtt_broker
+
         mqtt_broker.publish(
             config.MQTT_TOPIC,
             json.dumps(

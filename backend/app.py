@@ -9,6 +9,7 @@ from backend.apis import api
 mqtt_broker = Mqtt()
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
