@@ -1,4 +1,9 @@
 # Before Start
+Store and Forward Node uses 
+Raspbian Buster Lite 
+Version: September 2019
+Release date: 2019-09-26
+
 Make sure you have the following installed on your RPI:
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/)
@@ -30,7 +35,7 @@ To install mosquitto:
 add the following:
 
 connection bridge-central
-address 157.230.15.139:1883
+address 157.230.15.139:1883 //replace 157.230.15.139 with ip of central server
 topic forest out 0
 ```
 
@@ -51,9 +56,16 @@ Make sure you have installed in a different machine:
 # Step to build the project from scratch
 the build proccess with docker-compose take care of everything you need to have up and runing the project in the RPI, also the containers are setup to auto restart in case the RPI is shutdown or restarted.
 
-    ~$ git clone https://gitlab.com/german.martinez/black-forest.git
-    it will ask you to login with your gitlab credentials
-    ~$ cd black-forest 
+    ~$ git clone https://github.com/saycel/black-rock-forest-store-forward-node.git
+    ~$ cd black-rock-forest-store-forward-node
+    ~$ sudo nano .env
+    
+    add the following to .env file
+    
+    POSTGRES_PASSWORD=postgres
+    POSTGRES_DB=brfc
+    PYTHONPATH=/brfc
+    
     ~$ sudo docker-compose build 
     ~$ sudo docker-compose up 
 
@@ -143,10 +155,12 @@ http://10.0.0.115:2323/sensor/collector/1234/abc/x1v3/?ch1=1&ch2=2
 
 # Store Records MQTT
 
-Follow this steps to store a new record in the database using **MQTT**.  
+Follow this steps to store a new record in the database using **MQTT**. 
+//replace 157.230.15.139 with ip of central server
+
 The format of the message:
 
-host:157.230.15.139
+host:157.230.15.139  
 port:1883
 topic: forest
 protocol: mqtt/tcp
@@ -173,74 +187,54 @@ Example:
             "device_id": "3",
             "net_key": "2",
             "channels": {
-                "ch1": "1",
-                "ch2": "2"
+                "humidity": "1",
+                "temperature": "2"
             }
         }
 ```
 
   
 
-# Get all records
+# Get records
 
-Follow this steps to get all records in the database using a **GET HTTP REQUEST**.  
+Follow this steps to get records in the database using a **GET HTTP REQUEST**.  
 
 Generic:
-    http://**RPI-IP**:2323/sensor/all
+    http://**RPI-IP**:2323/sensor/data/<page_size>/<page_number>
 
 Example:  
-    http://10.0.0.115:2323/sensor/all
+    http://10.0.0.115:2323/sensor/10/1/
 
 Add to the request headers the following:
 
 Authorization=**JWT-TOKEN-GENERATED-BEFORE**
 
   1) open postman
-  2) use http://**RPI-IP**:2323/sensor/all
+  2) use http://**RPI-IP**:2323/sensor/data/10/1
   3) click the send button next to url textbox
   4) In case you have records in the db you will receive a list of json   
   ```json5
     [
         {
-            "app_key": "1",
-            "channels": {
-                "ch1": "1",
-                "ch2": "2"
-            },
-            "device_id": "3",
-            "net_key": "2"
+            "page": 1,
+            "total_count": 2,
+            "total_pages": 0
         },
         {
-            "app_key": "dd",
-            "channels": {
-                "ch1": "1",
-                "ch2": "2"
-            },
-            "device_id": "ff",
-            "net_key": "ff"
+            "app_key": "1234",
+            "created_at": "Sat, 05 Oct 2019 01:05:12 GMT",
+            "device_id": "x1v3",
+            "field_name": "ch1",
+            "net_key": "abc",
+            "value": 1.0
+        },
+        {
+            "app_key": "1234",
+            "created_at": "Sat, 05 Oct 2019 01:05:12 GMT",
+            "device_id": "x1v3",
+            "field_name": "ch2",
+            "net_key": "abc",
+            "value": 2.0
         }
     ]
 ```  
-
-# Upload csv File
-
-To upload a csv follow the steps:
-
-1) The csv file must have as headers:
-    the name of the Column.
-2) The csv file must have in the second line, a unit of measurement for the corresponding column.
-3) From the third line in advance comes the data, only float data is support.
-
-For example:
-```csv
-temperature, pressure
-°C, hPa
-12.0, 1000.0
-```
-
-The previous will be load in the database as
-
-|id|app_key|net_key|device_id|value|created_at|field_name|unit_string|
-|---|---|---|---|---|---|---|---|
-|1|from_csv|from_csv|from_csv|12.0|2014-11-2800:00:00|temperature|°C|
-|2|from_csv|from_csv|from_csv|1000.0|2014-11-2800:00:00|pressure|hPa|
