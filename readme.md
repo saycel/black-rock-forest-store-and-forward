@@ -56,7 +56,7 @@ Make sure you have installed in a different machine:
 # Step to build the project from scratch
 the build proccess with docker-compose take care of everything you need to have up and runing the project in the RPI, also the containers are setup to auto restart in case the RPI is shutdown or restarted.
 
-    ~$ git clone https://github.com/saycel/black-rock-forest-store-forward-node.git
+    ~$ git clone https://github.com/saycel/black-rock-forest-store-forward.git
     ~$ cd black-rock-forest-store-forward-node
     ~$ sudo nano .env
     
