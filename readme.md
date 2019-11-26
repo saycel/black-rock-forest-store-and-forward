@@ -53,7 +53,7 @@ Make sure you have installed in a different machine:
 - flask app as rest api
 - mosquitto for M2M pub/sub broker 
 
-# Step to build the project from scratch
+# Step to build the project from scratch (For Raspberry Pi)
 the build proccess with docker-compose take care of everything you need to have up and runing the project in the RPI, also the containers are setup to auto restart in case the RPI is shutdown or restarted.
 
     ~$ git clone https://github.com/saycel/black-rock-forest-store-forward.git
@@ -66,8 +66,8 @@ the build proccess with docker-compose take care of everything you need to have 
     POSTGRES_DB=brfc
     PYTHONPATH=/brfc
     
-    ~$ sudo docker-compose build 
-    ~$ sudo docker-compose up 
+    ~$ sudo docker-compose -f docker-compose.raspberry.yml build
+    ~$ sudo docker-compose -f docker-compose.raspberry.yml up 
 
 In case you have any permission problems with  docker-compose, please run all docker-compose commands with sudo.
 
