@@ -41,8 +41,9 @@ def insert_sensor_data(msg):
             )
         db_session.commit()
     except Exception:
+        db_session.rollback()
         print(f"error trying to insert {m_in}")
-
+        raise
 
 def on_connect(mqttc, obj, flags, rc):
     print("rc: " + str(rc))
