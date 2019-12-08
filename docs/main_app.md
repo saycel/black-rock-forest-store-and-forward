@@ -1,6 +1,40 @@
 # Store And Forward App
 ## Getting Started
 
+### Table of Contents
+
+[Software Prerequisites](#Software-Prerequisites)
+
+[Install the software prerequisites](#Install-the-software-prerequisites)
+
+[Development Environment Prerequisites](#Development-Environment-Prerequisites)
+
+[Running The App](#Running-The-App)
+
+[Getting The App Running (Raspberry Pi)](#getting-the-app-running-raspberry-pi)
+
+[Getting The App Running (Linux)](#getting-the-app-running-linux)
+
+[Getting The App Running (Mac)](#getting-the-app-running-mac)
+
+[Updating The App](#updating-the-app)
+
+[Adding Your First User](#adding-your-first-user)
+
+[Login With The User You Just Created](#Login-With-The-User-You-Just-Created)
+
+[Test To See If The App Is Running](#Test-To-See-If-The-App-Is-Running)
+
+[Add Data To The Database Using HTTP](#Add-Data-To-The-Database-Using-HTTP)
+
+[Add Data To The Database Using MQTT](#Add-Data-To-The-Database-Using-MQTT)
+
+[Get All Database Records](#Get-All-Database-Records)
+
+[Swagger API](#Swagger-API)
+
+[Upload csv File](#Upload-csv-File)
+
 ### Software Prerequisites
 
 Once you have your Raspberry Pi or Server set up download the following (instructions below):
@@ -245,6 +279,10 @@ Authorization=**JWT-TOKEN-GENERATED-BEFORE**
         }
     ]
 ```  
+
+### Swagger API
+
+We have swagger documentation, which you can find here: http://165.22.191.125:2323/swagger/
 
 ### Upload csv File
 

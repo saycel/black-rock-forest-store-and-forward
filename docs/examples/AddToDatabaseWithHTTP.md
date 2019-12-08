@@ -1,0 +1,1 @@
+GET http://10.0.0.115:2323/sensor/collector/1234/abc/x1v3/?ch1=1&ch2=2
