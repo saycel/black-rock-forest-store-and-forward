@@ -25,3 +25,5 @@ The directions below detail how we set up our network, and how you can follow al
 [Sensor Guide](./docs/esp8266.md) using the ESP8266 and the DHT22.
 
 [Main App Guide](./docs/main_app.md) to set up the main app as a store and forward server on either a Raspberry Pi or a Server.
+
+[Add A Grafana Panel](./docs/grafana.md)
