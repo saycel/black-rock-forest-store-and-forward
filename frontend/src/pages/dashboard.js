@@ -32,7 +32,11 @@ const Dashboard = () => (
       </button>
     </Link>
 
-    <a href="http://165.22.191.125:3000/?orgId=1" target="_blank">
+    <a
+      href="http://165.22.191.125:3000/?orgId=1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <button style={{
         backgroundColor: '#40577a',
         color: '#fffaff',
@@ -44,7 +48,7 @@ const Dashboard = () => (
       </button>
     </a>
 
-    <Link to="/forms">
+    {/* <Link to="/forms">
       <button style={{
         backgroundColor: '#62799c',
         color: '#fffaff',
@@ -54,7 +58,8 @@ const Dashboard = () => (
       }}>
         Forms
       </button>
-    </Link>
+    </Link> */}
+
     <Link to="/connect-to-node">
       <button style={{
         backgroundColor: '#62799c',
