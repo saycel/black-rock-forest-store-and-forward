@@ -55,6 +55,13 @@ Make sure you have installed on your computer:
 
 `$ cd black-forest`
 
+Add the following to .env file
+```
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=brfc
+PYTHONPATH=/brfc
+```
+
 `$ sudo docker-compose -f docker-compose.raspberry.yml build`
 
 `$ sudo docker-compose -f docker-compose.raspberry.yml up -d`
@@ -64,6 +71,13 @@ Make sure you have installed on your computer:
 `$ git clone https://github.com/saycel/black-rock-forest-store-and-forward`
 
 `$ cd black-forest`
+
+Add the following to .env file
+```
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=brfc
+PYTHONPATH=/brfc
+```
 
 `$ sudo docker-compose build`
 
