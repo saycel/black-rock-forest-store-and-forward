@@ -8,13 +8,17 @@ const CSVUpload = () => (
   <Layout>
     <SEO title="CSV Upload" />
     <h1>CSV Upload</h1>
-    <form enctype="multipart/form-data">
-      <div class="field">
-        <label for="documents">
-          <span class="label">Choose a csv to upload</span>
+    <form
+      encType="multipart/form-data"
+      method="PUT"
+      action="165.22.191.125:2323/data_uploader/data"
+    >
+      <div className="field">
+        <label htmlFor="documents">
+          <span className="label">Choose a csv to upload</span>
           <br />
         </label>
-        <input class="field-file" type="file" id="file" name="file" />
+        <input className="field-file" type="file" id="file" name="file" />
       </div>
       <input style={{
         backgroundColor: '#7491bf',

@@ -30,7 +30,7 @@ const Header = ({ siteTitle }) => (
       </h1>
       <span>
         <Link
-          to="#"
+          to="/#"
           style={{
             color: `white`,
             textDecoration: `none`,
@@ -44,7 +44,7 @@ const Header = ({ siteTitle }) => (
       </span>
       <span>
         <Link
-          to="#about"
+          to="/#about"
           style={{
             color: `white`,
             textDecoration: `none`,
