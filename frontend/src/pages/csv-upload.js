@@ -19,8 +19,7 @@ class CSVUpload extends React.Component {
     console.log(this.state)
     const data = new FormData();
     data.append('file', this.state.file)
-    axios.put("http://165.22.191.125:2323/data_uploader/data", data, { // receive two parameter endpoint url ,form data 
-    })
+    axios.put("http://165.22.191.125:2323/data_uploader/data", data, {})
       .then(res => { // then print response status
         console.log(res.statusText)
         alert("Form submitted!");
