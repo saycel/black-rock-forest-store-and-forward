@@ -1,7 +1,8 @@
 # Store And Forward App
-## Getting Started
 
-### Table of Contents
+## Table of Contents
+
+[Getting Started](#Getting-Started)
 
 [Software Prerequisites](#Software-Prerequisites)
 
@@ -34,6 +35,8 @@
 [Swagger API](#Swagger-API)
 
 [Upload csv File](#Upload-csv-File)
+
+## Getting Started
 
 ### Software Prerequisites
 
