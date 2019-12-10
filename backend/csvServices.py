@@ -10,7 +10,7 @@ from backend.repositories import SensorRepository
 
 class CsvDataService:
     def _create_records_dict(
-        row, user_id, app_key, net_key, device_id, units, created_at
+        self, row, user_id, app_key, net_key, device_id, units, created_at
     ):
         return [
             {
