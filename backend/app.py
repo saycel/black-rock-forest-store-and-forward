@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_mqtt import Mqtt
+from flask_cors import CORS
 
 from backend import config
 from backend.apis import api
@@ -12,6 +13,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(config)
     mqtt_broker.init_app(app)
     api.init_app(
