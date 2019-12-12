@@ -4,8 +4,8 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from backend import config as app_confing
 
+from backend.config import DATABASE_URI
 from backend.models import Base
 
 import alembic
@@ -31,7 +31,7 @@ target_metadata = Base.metadata
 # ... etc.
 
 
-config.set_main_option("sqlalchemy.url", app_confing.DATABASE_URI)
+config.set_main_option("sqlalchemy.url", DATABASE_URI)
 
 
 def run_migrations_offline():
