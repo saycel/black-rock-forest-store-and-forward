@@ -12,4 +12,4 @@ FROM base
 COPY . /brfc
 WORKDIR /brfc
 
-ENTRYPOINT [ "/brfc/run-prod-server.sh" ]
+ENTRYPOINT [ "/brfc/run-test-server.sh" ]
