@@ -1,6 +1,18 @@
 // Add red arrows to images where buttons or text is placed. 
 
-# How To Add A Grafana Panel
+# What is Grafana?
+
+# How to access Grafana
+## on a Rpi, on a server
+
+# How to install Grafana?
+
+# What are users, how to add user?
+
+# What is the current way Grafana is set up for Black Rock Forest?
+Super users, users, etc..
+
+# How To Add A sensor to a Grafana Panel
 Step 1:
 
 On the upper right of the page, click "Add Panel".
