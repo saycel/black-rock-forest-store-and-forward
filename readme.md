@@ -31,15 +31,22 @@ A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses ca
 The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. 
 [More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
+//ADD PICTURE
+//ADD DESCRIPTION
 [Raspberry Pi](https://www.raspberrypi.org/)
 
+//ADD PICTURE
+//ADD DESCRIPTION
 [Digital Ocean](https://www.digitalocean.com/)
 
 ### How To Guides
+The how to guides are broken down into 3 major componenets of the Store and FOrward Node system. 
 
-[Sensor Guide](./docs/esp8266.md) using the ESP8266 and the DHT22.
+[Sensor Guide](./docs/esp8266.md) The Sensor guide has instructions on how to use WEMOS D1 ESP8266 microcontroller and a DHT22 and connect them to a Store and Forward network.  
 
-[Main App Guide](./docs/main_app.md) to set up the main app as a store and forward server on either a Raspberry Pi or a Server.
+[Main App Guide](./docs/main_app.md) Is a step by step instructions for setting up as a store and forward server on either a Raspberry Pi or a Cloud based server.
 
-[Add A Grafana Panel](./docs/grafana.md)
+[Grafana Store and Forward Guide](./docs/grafana.md) provides instructions for visualizing data from Sensors on a Grafana, an open source visulaization platform.  
+
+[FAQ & Troubleshooting]
 
