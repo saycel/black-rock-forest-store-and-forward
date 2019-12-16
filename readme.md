@@ -25,7 +25,11 @@ The directions below detail how we set up our network, and how you can follow al
 
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
-[ESP8266](http://esp8266.net/)
+
+//ADD PICTURE
+//ADD DESCRIPTION
+The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. 
+[More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
 [Raspberry Pi](https://www.raspberrypi.org/)
 
