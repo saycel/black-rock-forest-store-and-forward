@@ -49,5 +49,5 @@ The how to guides are broken down into 3 major componenets of the Store and FOrw
 [Grafana Store and Forward Guide](./docs/grafana.md) provides instructions for visualizing data from Sensors on a Grafana, an open source visulaization platform.  
 
 ### FAQ & Troubleshooting
-[FAQ and troubleshooting] will provide users answers to common questions, and ways to debug the Store and Forward system.  
+[FAQ and troubleshooting](./docs/faq-troubleshooting.md) will provide users answers to common questions, and ways to debug the Store and Forward system.  
 
