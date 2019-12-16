@@ -7,7 +7,7 @@ The Store and Forward nodes are data logging Raspberry Pi based servers that are
 At one end of the network, are one or more sensors. Those sensors can connect to a Raspberry Pi or local server if connected to a LAN, or a remote server if connected to the Internet. The data is also avaliable to be visualized using Grafana, an application wich is also avaliable in the store and forward node deployment packages that are part of this repository. 
 All of our testing has been done with:
 
-- ESP8266 - WEMOS D2,  
+- ESP8266 - WEMOS D2 
 - DHT22 
 - Raspberry Pi 3B+ 
 - Digital Ocean Droplet - Ubuntu 18.04
@@ -34,3 +34,6 @@ The directions below detail how we set up our network, and how you can follow al
 [Sensor Guide](./docs/esp8266.md) using the ESP8266 and the DHT22.
 
 [Main App Guide](./docs/main_app.md) to set up the main app as a store and forward server on either a Raspberry Pi or a Server.
+
+[Add A Grafana Panel](./docs/grafana.md)
+
