@@ -21,7 +21,11 @@ The directions below detail how we set up our network, and how you can follow al
 
 ### Hardware and Server
 
-[DHT8266](https://www.adafruit.com/product/385)
+![GitHub Logo](./docs/images/DHT22.gif)
+
+[DHT22](https://www.adafruit.com/product/385)
+// Add picture //
+A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). 
 
 [ESP8266](http://esp8266.net/)
 
