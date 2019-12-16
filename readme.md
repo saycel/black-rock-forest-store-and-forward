@@ -17,6 +17,12 @@ It is important to note that each of these layers are completely decoupled. They
 
 The directions below detail how we set up our network, and how you can follow along. 
 
+## Understanding the Architecture
+The Store and Forward node system is made up of 4 compnents:
+1. the Sensor; 2 the ESP8266 Microcontroller; 3. The Raspberry Pi with Store and Forward Node Software installed; 4. Cloud Server with Store and forward Node Software installed and running Grafana. 
+
+
+
 ## Getting Started
 
 ### Hardware and Server
@@ -26,21 +32,21 @@ The directions below detail how we set up our network, and how you can follow al
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
 
-//ADD PICTURE
-//ADD DESCRIPTION
+#### //ADD PICTURE
+#### //ADD DESCRIPTION
 The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. 
 [More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
-//ADD PICTURE
-//ADD DESCRIPTION
+#### //ADD PICTURE
+#### //ADD DESCRIPTION
 [Raspberry Pi](https://www.raspberrypi.org/)
 
-//ADD PICTURE
-//ADD DESCRIPTION
+#### //ADD PICTURE
+#### //ADD DESCRIPTION
 [Digital Ocean](https://www.digitalocean.com/)
 
 ### How To Guides
-The how to guides are broken down into 3 major componenets of the Store and FOrward Node system. 
+The how to guides are broken down into 3 major componenets of the Store and Forward Node system. 
 
 [Sensor Guide](./docs/esp8266.md) The Sensor guide has instructions on how to use WEMOS D1 ESP8266 microcontroller and a DHT22 and connect them to a Store and Forward network.  
 
