@@ -1,4 +1,41 @@
 # Store And Forward App
+
+## Table of Contents
+
+[Getting Started](#Getting-Started)
+
+[Software Prerequisites](#Software-Prerequisites)
+
+[Install the software prerequisites](#Install-the-software-prerequisites)
+
+[Development Environment Prerequisites](#Development-Environment-Prerequisites)
+
+[Running The App](#Running-The-App)
+
+[Getting The App Running (Raspberry Pi)](#getting-the-app-running-raspberry-pi)
+
+[Getting The App Running (Linux)](#getting-the-app-running-linux)
+
+[Getting The App Running (Mac)](#getting-the-app-running-mac)
+
+[Updating The App](#updating-the-app)
+
+[Adding Your First User](#adding-your-first-user)
+
+[Login With The User You Just Created](#Login-With-The-User-You-Just-Created)
+
+[Test To See If The App Is Running](#Test-To-See-If-The-App-Is-Running)
+
+[Add Data To The Database Using HTTP](#Add-Data-To-The-Database-Using-HTTP)
+
+[Add Data To The Database Using MQTT](#Add-Data-To-The-Database-Using-MQTT)
+
+[Get All Database Records](#Get-All-Database-Records)
+
+[Swagger API](#Swagger-API)
+
+[Upload csv File](#Upload-csv-File)
+
 ## Getting Started
 
 ### Software Prerequisites
@@ -55,6 +92,13 @@ Make sure you have installed on your computer:
 
 `$ cd black-forest`
 
+Add the following to .env file
+```
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=brfc
+PYTHONPATH=/brfc
+```
+
 `$ sudo docker-compose -f docker-compose.raspberry.yml build`
 
 `$ sudo docker-compose -f docker-compose.raspberry.yml up -d`
@@ -64,6 +108,13 @@ Make sure you have installed on your computer:
 `$ git clone https://github.com/saycel/black-rock-forest-store-and-forward`
 
 `$ cd black-forest`
+
+Add the following to .env file
+```
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=brfc
+PYTHONPATH=/brfc
+```
 
 `$ sudo docker-compose build`
 
@@ -231,6 +282,10 @@ Authorization=**JWT-TOKEN-GENERATED-BEFORE**
         }
     ]
 ```  
+
+### Swagger API
+
+We have swagger documentation, which you can find here: http://165.22.191.125:2323/swagger/
 
 ### Upload csv File
 
