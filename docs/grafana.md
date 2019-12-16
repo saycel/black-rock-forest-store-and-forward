@@ -1,3 +1,5 @@
+// Add red arrows to images where buttons or text is placed. 
+
 # How To Add A Grafana Panel
 Step 1:
 
