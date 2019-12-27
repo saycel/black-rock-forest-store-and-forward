@@ -20,3 +20,6 @@ MQTT_PASSWORD = os.environ.get("MQTT_PASSWORD")
 MQTT_KEEPALIVE = 5
 MQTT_TLS_ENABLED = False
 MQTT_TOPIC = os.environ.get("MQTT_TOPIC") or "forest"
+
+# Redis
+REDIS_URL = os.environ.get("REDIS_URL") or "redis://"

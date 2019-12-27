@@ -20,7 +20,13 @@ services:
     image: eclipse-mosquitto:1.5.8
     restart: unless-stopped 
     network_mode: host
-  
+
+  redis:
+    container_name: redis
+    image: redis:6.0-rc1-alpine
+    restart: unless-stopped
+    network_mode: host
+
   app:
     container_name: app
     build:
@@ -32,6 +38,7 @@ services:
     depends_on:
       - mosquitto
       - database
+      - redis
 
 
 volumes:

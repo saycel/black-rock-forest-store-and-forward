@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rqworker brfcQueue &
 python init_database.py
 python mqtt_sub.py &
 alembic upgrade head

@@ -11,3 +11,5 @@ psycopg2==2.8.3
 alembic==1.1.0
 gunicorn==19.9.0
 Flask-Cors==3.0.8
+redis==3.3.11
+rq==1.1.0
