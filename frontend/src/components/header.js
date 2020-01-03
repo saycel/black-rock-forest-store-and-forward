@@ -16,13 +16,13 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0, display: 'inline' }}>
+      <h1 style={{ margin: 0, display: "inline" }}>
         <Link
           to="/"
           style={{
             color: `white`,
             textDecoration: `none`,
-            textShadow: '2px 2px 8px #000000',
+            textShadow: "2px 2px 8px #000000",
           }}
         >
           {siteTitle}
@@ -30,13 +30,13 @@ const Header = ({ siteTitle }) => (
       </h1>
       <span>
         <Link
-          to="/#"
+          to="/login"
           style={{
             color: `white`,
             textDecoration: `none`,
-            textShadow: '2px 2px 8px #000000',
-            float: 'right',
-            marginTop: '0.5rem'
+            textShadow: "2px 2px 8px #000000",
+            float: "right",
+            marginTop: "0.5rem",
           }}
         >
           Log in
@@ -48,10 +48,10 @@ const Header = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
-            textShadow: '2px 2px 8px #000000',
-            float: 'right',
-            marginTop: '0.5rem',
-            marginRight: '1rem',
+            textShadow: "2px 2px 8px #000000",
+            float: "right",
+            marginTop: "0.5rem",
+            marginRight: "1rem",
           }}
         >
           About
@@ -63,10 +63,10 @@ const Header = ({ siteTitle }) => (
           style={{
             color: `white`,
             textDecoration: `none`,
-            textShadow: '2px 2px 8px #000000',
-            float: 'right',
-            marginTop: '0.5rem',
-            marginRight: '1rem',
+            textShadow: "2px 2px 8px #000000",
+            float: "right",
+            marginTop: "0.5rem",
+            marginRight: "1rem",
           }}
         >
           Dashboard
