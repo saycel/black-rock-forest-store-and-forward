@@ -23,6 +23,7 @@ class ConnectToNode extends React.Component {
   }
 
   getData = (ipAddress, page = 1, size = 100) => {
+    localStorage.setItem("downloadInProgress", "true")
     let initialUrl = `http://${ipAddress}:2323/sensor/data/${size}/${page}`
     axios
       .get(initialUrl)
@@ -32,8 +33,10 @@ class ConnectToNode extends React.Component {
         this.saveToLocalStorage(page, t)
         const finalPage = h.total_pages
         localStorage.setItem("finalPage", finalPage)
+
         if (page === finalPage) {
           this.setState({ message: "Download complete" })
+          localStorage.removeItem("downloadInProgress")
         } else {
           const nextPage = (page += 1)
           this.setState({
