@@ -4,12 +4,17 @@ import axios from "axios"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+const NAMESPACE_PREFIX = "BRFP-"
+const DATA_PAGE_PREFIX = "data-page-"
 class ConnectToNode extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       ipAddress: null,
       message: "",
+      dataDownloaded: false,
+      downloadInProgress: false,
+      finalPage: "",
     }
   }
 
@@ -19,28 +24,52 @@ class ConnectToNode extends React.Component {
   }
 
   saveToLocalStorage(page, data) {
-    localStorage.setItem(page, JSON.stringify(data))
+    localStorage.setItem(
+      `${NAMESPACE_PREFIX}${DATA_PAGE_PREFIX}${page}`,
+      JSON.stringify(data)
+    )
+  }
+
+  downloadInProgress() {
+    this.setState({ downloadInProgress: true })
+  }
+
+  finishDownloadInProgress() {
+    this.setState({ downloadInProgress: false })
+  }
+
+  sendData() {
+    const finalPage = parseInt(this.state.finalPage)
+    for (let x = 0; x < finalPage; x++) {
+      const stringifiedData = localStorage.getItem(
+        `${NAMESPACE_PREFIX}${DATA_PAGE_PREFIX}${x}`
+      )
+      const data = JSON.parse(stringifiedData)
+      // how to get data to the server? Can we send it in bulk or
+      // are we forced to send it one by one?
+    }
   }
 
   getData = (ipAddress, page = 1, size = 100) => {
-    localStorage.setItem("downloadInProgress", "true")
-    let initialUrl = `http://${ipAddress}:2323/sensor/data/${size}/${page}`
+    this.downloadInProgress()
+    const initialUrl = `http://${ipAddress}:2323/sensor/data/${size}/${page}`
     axios
       .get(initialUrl)
       .then(res => {
-        // then print response status
         let [h, ...t] = res.data
         this.saveToLocalStorage(page, t)
+        this.setState({ dataDownloaded: true })
         const finalPage = h.total_pages
-        localStorage.setItem("finalPage", finalPage)
+        localStorage.setItem(`${NAMESPACE_PREFIX}finalPage`, finalPage)
 
         if (page === finalPage) {
-          this.setState({ message: "Download complete" })
-          localStorage.removeItem("downloadInProgress")
+          this.setState({ message: "Download complete", finalPage: page })
+          this.finishDownloadInProgress()
         } else {
           const nextPage = (page += 1)
           this.setState({
             message: `Downloading page ${nextPage} of ${h.total_pages}`,
+            finalPage: nextPage,
           })
           this.getData(ipAddress, nextPage, size)
         }
@@ -50,6 +79,7 @@ class ConnectToNode extends React.Component {
           message:
             "Sorry! There was an error. Please contact us to let us know.",
         })
+        this.finishDownloadInProgress()
       })
   }
   handleChange = event => {
@@ -95,6 +125,20 @@ class ConnectToNode extends React.Component {
             value="Submit"
           />
         </form>
+        {this.state.dataDownloaded && !this.state.downloadInProgress && (
+          <input
+            style={{
+              backgroundColor: "#62799c",
+              color: "#fffaff",
+              width: "196px",
+              height: "33px",
+              borderRadius: "25px",
+            }}
+            type="submit"
+            name="submit"
+            value="Upload data"
+          />
+        )}
       </Layout>
     )
   }
