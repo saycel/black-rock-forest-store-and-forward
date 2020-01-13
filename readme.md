@@ -18,8 +18,13 @@ It is important to note that each of these layers are completely decoupled. They
 The directions below detail how we set up our network, and how you can follow along. 
 
 ## Understanding the Architecture
+![Store and Forwad Architecture](./docs/images/Store-forward-arch2.png)
+
 The Store and Forward node system is made up of 4 compnents:
-1. the Sensor; 2 the ESP8266 Microcontroller; 3. The Raspberry Pi with Store and Forward Node Software installed; 4. Cloud Server with Store and forward Node Software installed and running Grafana. 
+- 1 The Sensor
+- 2 the ESP8266 Microcontroller; 
+- 3 The Raspberry Pi with Store and Forward Node Software installed; 
+- 4 Cloud Server with Store and forward Node Software installed and running Grafana. 
 
 
 
