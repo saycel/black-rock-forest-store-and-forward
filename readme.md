@@ -27,19 +27,16 @@ The Store and Forward node system is made up of 4 compnents:
 - 4 Cloud Server with Store and Forward Node Software and running Grafana
 
 
-## Getting Started
+## Getting Started: Hardware and Server
 
-### Hardware and Server
-
-## DHT22 
+### DHT22 
 ![DHT22](./docs/images/DHT22.gif)
 
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
-
-#### //ADD PICTURE
-#### //ADD DESCRIPTION
-The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. 
+### ESP8266 
+![WEMOS D1](./docs/images/WEMOS-d1.jpg) . ![WEMOS-d1-pro-mini](./docs/images/WEMOS-d1-pro-mini.png) . ![nodemcu](./docs/images/nodemcu.png)
+The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. It comes in several flavors, and for this project we used the WEMOS D1, WEMOS d1 mini Pro (with external antenna), and the NODEMCU.  
 [More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
 #### //ADD PICTURE
