@@ -21,18 +21,18 @@ The directions below detail how we set up our network, and how you can follow al
 ![Store and Forwad Architecture](./docs/images/Store-forward-arch2.png)
 
 The Store and Forward node system is made up of 4 compnents:
-- 1 The Sensor
-- 2 the ESP8266 Microcontroller; 
-- 3 The Raspberry Pi with Store and Forward Node Software installed; 
-- 4 Cloud Server with Store and forward Node Software installed and running Grafana. 
-
+- 1 The Sensor (DHT22)
+- 2 the ESP8266 Microcontroller (WEMOS D1) 
+- 3 The Raspberry Pi with Store and Forward Node Software 
+- 4 Cloud Server with Store and Forward Node Software and running Grafana
 
 
 ## Getting Started
 
 ### Hardware and Server
 
-![GitHub Logo](./docs/images/DHT22.gif)
+## DHT22 
+![DHT22](./docs/images/DHT22.gif)
 
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
