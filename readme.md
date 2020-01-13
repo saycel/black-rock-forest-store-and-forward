@@ -35,10 +35,9 @@ The Store and Forward node system is made up of 4 compnents:
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
 ### ESP8266 
-<img src="./docs/images/WEMOS-d1.jpg" width="100">  <img src="./docs/images/WEMOS-d1-pro-mini.png" width="100">   <img src="./docs/images/nodemcu.png" width="100"> 
+<img src="./docs/images/WEMOS-d1.jpg" width="200">      <img src="./docs/images/WEMOS-d1-pro-mini.png" width="200">       <img src="./docs/images/nodemcu.png" width="200"> 
 
 
-![WEMOS D1](./docs/images/WEMOS-d1.jpg | width = 60) . ![WEMOS-d1-pro-mini](./docs/images/WEMOS-d1-pro-mini.png | width = 60) . ![nodemcu](./docs/images/nodemcu.png | width = 60)
 The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. It comes in several flavors, and for this project we used the WEMOS D1, WEMOS d1 mini Pro (with external antenna), and the NODEMCU.  
 [More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
