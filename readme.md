@@ -38,13 +38,18 @@ A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses ca
 
 The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. It comes in several flavors, and for this project we used the
 
-*WEMOS D1*
+**WEMOS D1**
+
 <img WEMOSD1 src="./docs/images/WEMOS-d1.jpg" width="200">    
 
-*WEMOS d1 mini Pro (with external antenna)**
+
+**WEMOS d1 mini Pro (with external antenna)**
+
 <img src="./docs/images/WEMOS-d1-pro-mini.png" width="200">       
 
-*NODEMCU*
+
+**NODEMCU**
+
 <img src="./docs/images/nodemcu.png" width="200"> 
 
 
