@@ -31,7 +31,7 @@ services:
     container_name: app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
     restart: unless-stopped
     env_file: .env
     network_mode: host
@@ -40,6 +40,17 @@ services:
       - database
       - redis
 
+  web:
+    container_name: web
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - 8080:80
+    depends_on:
+      - app
 
 volumes:
   database:

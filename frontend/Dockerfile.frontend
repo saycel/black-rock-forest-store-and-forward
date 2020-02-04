@@ -1,0 +1,15 @@
+FROM node:11-alpine AS build
+LABEL maintainer="German Martinez"
+RUN apk add --no-cache --virtual .gyp python make g++
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package.json ./
+RUN yarn --frozen-lockfile --non-interactive
+COPY . .
+RUN yarn build
+
+FROM nginx:alpine
+COPY nginx /etc/nginx/
+COPY --from=build --chown=nginx:nginx /app/public /usr/share/nginx/html
+RUN touch /var/run/nginx
+HEALTHCHECK CMD [ "wget", "-q", "localhost:8080" ]
