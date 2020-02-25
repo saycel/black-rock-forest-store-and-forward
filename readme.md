@@ -45,6 +45,7 @@ The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontro
 [More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
 
 #### Raspberry Pi
+![Raspberry Pi](./docs/images/raspberry-piSM.jpg)
 [Raspberry Pi](https://www.raspberrypi.org/)
 
 #### Digital Ocean
