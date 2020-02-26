@@ -75,7 +75,6 @@ mqttc.on_publish = on_publish
 mqttc.on_subscribe = on_subscribe
 mqttc.on_log = on_log
 mqttc.connect(os.environ.get("MQTT_BROKER") or "localhost", 1883, 60)
-mqttc.subscribe("forest", 0)
-mqttc.subscribe("debug", 0)
+mqttc.subscribe([("forest", 0), ("debug", 0)])
 
 mqttc.loop_forever()
