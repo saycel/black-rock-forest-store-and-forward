@@ -24,6 +24,7 @@ def insert_debug(msg):
 
 
 def insert_sensor_data(msg):
+    m_in = "not defined"
     try:
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
         m_in = json.loads(msg.payload)
