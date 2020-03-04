@@ -44,13 +44,16 @@ The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontro
 
 [More information on ESP8266](http://esp8266.net/).
 
-#### Raspberry Pi
+### Raspberry Pi
 ![Raspberry Pi](./docs/images/raspberry-piSM.jpg)
 
 The Raspberry Pi is a small single-board computer where the store and forward node software is installed. Store and Forward nodes ar placed at each major wifi access point in the forest, and act as the local data logger for sensor nodes.  
 [More information on Raspberry Pi](https://www.raspberrypi.org/)
 
-#### Digital Ocean
+### Digital Ocean
+![Raspberry Pi](./docs/images/Digital-ocean.png)
+Digital Ocean is the cload infrastructure we use for the deployment of the Store and Forward Cloud service which includes Grafana.  This software can be installed on a digital ocean droplet, or on anu other cloud or local server.  
+
 [Digital Ocean](https://www.digitalocean.com/)
 
 
