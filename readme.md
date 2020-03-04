@@ -36,7 +36,7 @@ It is important to note that each of these layers are completely decoupled. They
 A DHT22 is a basic, low-cost digital temperature and humidity sensor. It uses capacitive humidity sensor and a thermistor to measure the surrounding air, and outputs a digital signal on the data pin (no analog input pins needed). [DHT22 is avaliable at adafruit.](https://www.adafruit.com/product/385)
 
 ### ESP8266 
-The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. It comes in several flavors, and for this project we used the
+The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontroller capability that can be programed using Arduino IDE. It comes in several flavors, and for this project we used the WEMOS D1
 
 | **WEMOS D1**      | **WEMOS D1 Mini Pro (with external antenna)** | **NODEMCU**   |
 | ------------- |:-------------:| -----:|
@@ -47,7 +47,8 @@ The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontro
 #### Raspberry Pi
 ![Raspberry Pi](./docs/images/raspberry-piSM.jpg)
 
-[Raspberry Pi](https://www.raspberrypi.org/)
+The Raspberry Pi is a small single-board computer where the store and forward node software is installed. Store and Forward nodes ar placed at each major wifi access point in the forest, and act as the local data logger for sensor nodes.  
+[More information on Raspberry Pi](https://www.raspberrypi.org/)
 
 #### Digital Ocean
 [Digital Ocean](https://www.digitalocean.com/)
