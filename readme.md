@@ -51,7 +51,8 @@ The Raspberry Pi is a small single-board computer where the store and forward no
 [More information on Raspberry Pi](https://www.raspberrypi.org/)
 
 ### Digital Ocean
-![Raspberry Pi](./docs/images/Digital-ocean.png)
+![Digital Ocean](./docs/images/Digital-ocean.png)
+
 Digital Ocean is the cload infrastructure we use for the deployment of the Store and Forward Cloud service which includes Grafana.  This software can be installed on a digital ocean droplet, or on anu other cloud or local server.  
 
 [Digital Ocean](https://www.digitalocean.com/)
