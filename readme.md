@@ -59,7 +59,7 @@ Digital Ocean is the cload infrastructure we use for the deployment of the Store
 ### How To Guides
 The how to guides are broken down into 3 major componenets of the Store and Forward Node system. 
 
-[Sensor Guide](./docs/esp8266.md) The Sensor guide has instructions on how to use WEMOS D1 ESP8266 microcontroller and a DHT22 and connect them to a Store and Forward network.  
+[Sensor Node Guide](./docs/esp8266.md) The Sensor guide has instructions on how to use WEMOS D1 ESP8266 microcontroller and a DHT22 and connect them to a Store and Forward network.  
 
 [Main App Guide](./docs/main_app.md) Is a step by step instructions for setting up as a store and forward server on either a Raspberry Pi or a Cloud based server.
 
