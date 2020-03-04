@@ -42,10 +42,11 @@ The ESP8266 is a low-cost Wi-Fi microchip with full TCP/IP stack and microcontro
 | ------------- |:-------------:| -----:|
 | <img WEMOSD1 src="./docs/images/WEMOS-d1.jpg" width="200"> | <img src="./docs/images/WEMOS-d1-pro-mini.png" width="200">      | <img src="./docs/images/nodemcu.png" width="200">  |
 
-[More information on ESP8266](http://esp8266.net/). [You can purchase ESP8266 here]
+[More information on ESP8266](http://esp8266.net/).
 
 #### Raspberry Pi
 ![Raspberry Pi](./docs/images/raspberry-piSM.jpg)
+
 [Raspberry Pi](https://www.raspberrypi.org/)
 
 #### Digital Ocean
