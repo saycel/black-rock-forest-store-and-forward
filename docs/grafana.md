@@ -18,7 +18,7 @@ Login into Grafana
 
 #### Step 2:
 On the upper left hand corner roll over "+" sign and click on dashboard. 
-This will allow you to create your own dashboard where you can add several panels rhat will display your sensor data.  
+This will allow you to create your own Dashboard where you can add several panels that will display your sensor data.  
 
 ![Grafana Step 1](./images/Grafana-1.jpg "Add Dashboard")
 
