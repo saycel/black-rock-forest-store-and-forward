@@ -17,7 +17,12 @@ On line 133 and 141 of the firmware code you changed "YOUR-SENS" to your own nam
 Login into Grafana
 
 #### Step 2:
-On the upper right of the page, click "Add Panel".
+On the upper left hand corner roll over "+" sign and click on dashboard. 
+This will allow you to create your own dashboard where you can add several panels rhat will display your sensor data.  
+
+![Grafana Step 1](./images/Grafana-1.jpg "Add Dashboard")
+
+and right of the page, click "Add Panel".
 
 ![GitHub Logo](./images/Grafana-Step-1.png "Add Panel")
 
