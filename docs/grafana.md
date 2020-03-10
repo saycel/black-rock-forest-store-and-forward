@@ -44,15 +44,27 @@ You may see a graph, ignore this information and further down edit information i
 
 
 #### Step 6:
-Click on the box to the right of Metric Column and pick "unit string".  if nothing appears in the dropdown press the letter "u" and it should appear.  
+Click on the box to the right of Metric Column and pick "unit string".  If nothing appears in the dropdown press the letter "u" and it should appear.  
 
 ![Grafana Step 6](./images/Grafana-6.jpg "Edit panel")
 
 
 #### Step 7:
-Click on the box to the right of Metric Column and pick "unit string".  if nothing appears in the dropdown press the letter "u" and it should appear.  
+Click on the box to the right of "Macro..." and pick "expression".  If nothing appears in the dropdown press the letter "e" and it should appear.  
 
 ![Grafana Step 7](./images/Grafana-7.jpg "Edit panel")
+
+#### Step 8:
+Click on the "+" sign to the right of "Macro..." and pick "expression".  If nothing appears in the dropdown press the letter "e" and it should appear.  
+
+![Grafana Step 8](./images/Grafana-8.jpg "Edit panel")
+
+#### Step 9:
+Click on the first "value" next to "Expr:" and choose "device_id". 
+
+![Grafana Step 9](./images/Grafana-9.jpg "Edit panel")
+
+
 
 and right of the page, click "Add Panel".
 
