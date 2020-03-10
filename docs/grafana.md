@@ -32,9 +32,27 @@ On the save popup change the name of your dashboard.  For this example I will ch
 ![Grafana Step 3](./images/Grafana--3.jpg "Name Dashboard")
 
 #### Step 4:
-Once you make your forst dashboard you will see a default panel.  Click on the Panel titles and in the drop down click edit. 
+Once you make your first dashboard you will see a default panel.  Click on the "Panel title" and in the drop down click "edit". 
 
 ![Grafana Step 4](./images/Grafana-4.jpg "Edit panel")
+
+
+#### Step 5:
+You may see a graph, ignore this information and further down edit information in the "Query" section
+
+![Grafana Step 5](./images/Grafana-5.jpg "Edit panel")
+
+
+#### Step 6:
+Click on the box to the right of Metric Column and pick "unit string".  if nothing appears in the dropdown press the letter "u" and it should appear.  
+
+![Grafana Step 6](./images/Grafana-6.jpg "Edit panel")
+
+
+#### Step 7:
+Click on the box to the right of Metric Column and pick "unit string".  if nothing appears in the dropdown press the letter "u" and it should appear.  
+
+![Grafana Step 7](./images/Grafana-7.jpg "Edit panel")
 
 and right of the page, click "Add Panel".
 
