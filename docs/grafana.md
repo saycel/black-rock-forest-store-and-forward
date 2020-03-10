@@ -70,7 +70,7 @@ Click on the second "value" next to "Expr:" and type in " 'yoursensor-name' "; f
 ![Grafana Step 9](./images/Grafana-9.jpg "Edit panel")
 
 #### Step 11:
-Save your work by pressing the disk icon on the top right. 
+Save your work by pressing the disk icon on the top right. When you save youcan add a note to your save, much like github you add a not after you make an update.  
 
 ![Grafana Step 11](./images/Grafana-11.jpg "Edit panel")
 
