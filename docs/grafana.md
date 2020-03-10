@@ -57,10 +57,15 @@ Click on the box to the right of "Macro..." and pick "expression".  If nothing a
 #### Step 8:
 Click on the "+" sign to the right of "Macro..." and pick "expression".  If nothing appears in the dropdown press the letter "e" and it should appear.  
 
-![Grafana Step 8](./images/Grafana-8.jpg "Edit panel")
+![Grafana Step 8a](./images/Grafana-8a.jpg "Edit panel")
 
 #### Step 9:
-Click on the first "value" next to "Expr:" and choose "device_id". 
+Click on the first "value" next to "Expr:" and choose "device_id".  
+
+![Grafana Step 8](./images/Grafana-8.jpg "Edit panel")
+
+#### Step 10:
+Click on the second "value" next to "Expr:" and type in " 'yoursensor-name' "; for this example it is 'SEN-01'. besure to add the ''
 
 ![Grafana Step 9](./images/Grafana-9.jpg "Edit panel")
 
