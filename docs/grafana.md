@@ -1,20 +1,22 @@
 // Add red arrows to images where buttons or text is placed. 
 
-# What is Grafana?
+### Grafana
+Grafana is a multi-platform open source analytics and interactive visualization software. It provides charts, graphs, and alerts. Grafana is currently part of the installation package included in this repository. 
 
-# How to access Grafana
-## on a Rpi, on a server
+### Access Grafana
+Access Grafana thorugh the IP address where you installed the Store and Forward node software.  The Black Rock Forest you can http://165.22.191.125:3000/ 
 
-# How to install Grafana?
+You will need a login and Password. Ask Black Rock Forest security advisor for your credentials. 
 
-# What are users, how to add user?
 
-# What is the current way Grafana is set up for Black Rock Forest?
-Super users, users, etc..
+### How To Add A sensor to a Grafana Panel
+Follow [Sensor Node Guide](./docs/esp8266.md) to make a ESP8266 sensor node.  
+On line 133 and 141 of the firmware code you changed "YOUR-SENS" to your own name for the sensor. For this example we will give it the name "SEN-001" 
 
-# How To Add A sensor to a Grafana Panel
-Step 1:
+#### Step 1:
+Login into Grafana
 
+#### Step 2:
 On the upper right of the page, click "Add Panel".
 
 ![GitHub Logo](./images/Grafana-Step-1.png "Add Panel")
