@@ -22,6 +22,16 @@ This will allow you to create your own Dashboard where you can add several panel
 
 ![Grafana Step 1](./images/Grafana-1.jpg "Add Dashboard")
 
+#### Step 3:
+Click on disk icon to save dashbard. 
+![Grafana Step 2](./images/Grafana-2.jpg "Add Dashboard")
+
+#### Step 4:
+On the save popup change the name of your dashboard.  For this example I will change it to "Science Center Sensor Dashboard".  click "save". It is a good idea to give your dashboard a descriptive name, so you can refer to it quickly when you want to access your sensor visualizations.  For example I may have sensor near Science center, and other sensor at Mt. Misery.  I could create different dashboards for each location, or I could create a dashboard that has both Science Center and Mt. Misery Sensors and I migh called this Dashboard based on the experiment I am conducting like "Black Rock Forest Temperature and Humidity Dashboard"
+
+![Grafana Step 3](./images/Grafana-3.jpg "Add Dashboard")
+
+
 and right of the page, click "Add Panel".
 
 ![GitHub Logo](./images/Grafana-Step-1.png "Add Panel")
