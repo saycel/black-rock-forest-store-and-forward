@@ -65,13 +65,17 @@ Click on the first "value" next to "Expr:" and choose "device_id".
 ![Grafana Step 8](./images/Grafana-8.jpg "Edit panel")
 
 #### Step 10:
-Click on the second "value" next to "Expr:" and type in " 'yoursensor-name' "; for this example it is 'SEN-01'. besure to add the ''
+Click on the second "value" next to "Expr:" and type in " 'yoursensor-name' "; for this example it is 'SEN-01'. be sure to add the ''
 
 ![Grafana Step 9](./images/Grafana-9.jpg "Edit panel")
 
+#### Step 11:
+Save your work by pressing the disk icon on the top right. 
+
+![Grafana Step 11](./images/Grafana-11.jpg "Edit panel")
 
 
-and right of the page, click "Add Panel".
+### Add a new panel to your dashboard. 
 
 ![GitHub Logo](./images/Grafana-Step-1.png "Add Panel")
 
