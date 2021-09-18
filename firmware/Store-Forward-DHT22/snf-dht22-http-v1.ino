@@ -5,7 +5,7 @@
 DHTesp dht;
 
 const char* ssid = "MyAlt";                   //Nombre de la RED
-const char* password = "2805indigo";           //Password de la RED
+const char* password = "";           //Password de la RED
 const char* mqtt_server = "192.168.128.124";   //Dirección servidor
 const char* http_server = "192.168.0.148";
 const char* HOSTNAME = "esp01";
