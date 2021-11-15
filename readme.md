@@ -15,6 +15,7 @@ All of our testing has been done with:
 
 ## Understanding the Architecture
 ![Store and Forwad Architecture](./docs/images/Store-forward-arch2.png)
+![Picture](./docs/images/Store-forward-arch2.png)
 
 The Store and Forward node system is made up of 5 components:
 - 1 - DHT22 Teperature and Humidity Sensor
